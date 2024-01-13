@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 12:37:32 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/13 10:23:41 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/13 15:02:04 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@
 # include <mlx.h>
 
 typedef struct	s_design {
-	int	row;
-	int	col;
-	int	exit;
-	int	player;
-	int	ghost;
-	int	shell;
+	char	wall;
+	char	space;
+	char	exit;
+	char	player;
+	char	enemys;
+	char	collect;
 
 }				t_design;
 
@@ -38,11 +38,11 @@ typedef struct	s_game {
 
 //*** check map ***
 
-int			ft_check_arg(int argc, char **argv, t_design *design);
-//char		**ft_check_arg(int argc, char **argv, t_design design);
+char		**ft_check_arg(int argc, char **argv, t_design *design);
 int			ft_strnrcmp(char *argv, char *str, int count);
 int			ft_strlen(char *str);
 char		**ft_check_map(int fd, t_design *design);
+bool		ft_cheack_dimension();
 
 //*** errors ***
 
