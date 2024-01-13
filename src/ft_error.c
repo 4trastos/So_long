@@ -6,16 +6,16 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 19:31:45 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/13 11:16:48 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/13 20:46:14 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_error_msg(char *msg, char **map_str)
+void	ft_error_msg(char *msg, char **map)
 {
-	if (map_str)
-		free (map_str);
+	if (map)
+		free (map);
 	int	i;
 
 	i = 0;
@@ -24,5 +24,6 @@ void	ft_error_msg(char *msg, char **map_str)
 		write(1, &msg[i], 1);
 		i++;
 	}
+	write(1, "\n", 1);
 	exit (0);
 }

@@ -6,11 +6,31 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 12:35:36 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/13 12:15:50 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/13 22:08:01 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	print_map(char **map)
+{
+	printf("Entra a printear mapa\n");
+   	int i;
+	
+	i = 0;
+	while (map[i] != NULL)
+	{
+		printf("Dentro del while\n");
+		printf("Cadena %d: %s\n", i, map[i]);
+		printf("%s\n", map[i]);
+		i++;
+	}
+}
+
+void	ft_leaks(void)
+{
+	system("leaks -q so_long");
+}
 
 char	**ft_check_arg(int argc, char **argv, t_design *design)
 {
@@ -33,12 +53,15 @@ char	**ft_check_arg(int argc, char **argv, t_design *design)
 
 int	main(int argc, char **argv)
 {	
+	atexit(ft_leaks);
 	char		**map;
 	t_design	design;
 
 	if (argc == 1)
 		ft_error_msg("You have to upload a file to play!", NULL);
 	map = ft_check_arg(argc, argv, &design);
+	printf("Este el mapa creado: \n");
+	print_map(map); //NO PRINTA PORQUE NO LOGRO GUARDAR BIEN EL MAPA.
 //	ft_init_game(map, design);
 	return (0);
 }

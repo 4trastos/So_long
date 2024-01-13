@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 12:37:32 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/13 15:02:04 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/13 21:26:21 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@
 # include <limits.h>
 # include <fcntl.h>
 # include <mlx.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 7
+# endif
 
 typedef struct	s_design {
 	char	wall;
@@ -40,17 +44,39 @@ typedef struct	s_game {
 
 char		**ft_check_arg(int argc, char **argv, t_design *design);
 int			ft_strnrcmp(char *argv, char *str, int count);
-int			ft_strlen(char *str);
 char		**ft_check_map(int fd, t_design *design);
-bool		ft_cheack_dimension();
+bool		ft_check_dimension();
+bool		is_valid_char(char c, t_design *design);
+void		ft_read_file(int fd, t_design *design, char *str);
+bool		ft_check_dimension(char *line, t_design *design);
 
 //*** errors ***
 
-void		ft_error_msg(char *msg, char **map_str);
-t_design	ft_newmap_error(void);
+void		ft_error_msg(char *msg, char **map);
 
 //** create new design node **
 
-t_design	ft_new_design(void);
+t_design	*ft_new_design(void);
+
+//** GNL **
+
+char		*get_next_line(int fd);
+size_t		ft_strlen(char *str);
+char		*ft_strchr(char *s, int c);
+char		*ft_strjoin(char *board, char *buffer);
+char		*ft_strdup(char *s1);
+
+//** auxiliars **
+
+char		*ft_strdup(char *s1);
+size_t		ft_strlen_custom(char *line);
+
+//** SPLIT **
+
+char		**ft_empty_split(void);
+char		*ft_strdup_custom(const char *s, size_t n);
+char		**ft_free_str(char **aux);
+int			ft_countc(char const *s, char c);
+char		**ft_split(char const *s, char c);
 
 #endif
