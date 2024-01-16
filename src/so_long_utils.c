@@ -61,3 +61,16 @@ size_t	ft_strlen_custom(char *line)
 		i++;
 	return (i);
 }
+
+int		ft_file_size(char *str, int size)
+{
+	int i;
+
+	i = 0;
+	while (str[i] != '\n' || str[i] != '\0')
+	{
+		i++;
+		size++;
+	}
+	return (size);
+}

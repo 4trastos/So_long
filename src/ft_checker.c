@@ -38,8 +38,10 @@ void	ft_read_file(int fd, t_design *design, char *str)
 {
 	char	*line; //La idea está sacada del main que hicimos del GNL. Es lo mismo tío!! No está acabado!!
 	int		i;
+	int		file_size;
 
 	line = NULL;
+	file_size = 0;
 	i = 1;
 	while (i > 0)
 	{
@@ -48,11 +50,13 @@ void	ft_read_file(int fd, t_design *design, char *str)
 			break;
 		if (!ft_check_dimension(line, design))
 			ft_error_msg("Error de Dimensión\n", &line);
-		str = ft_strdup(line); 
-//		str = ft_strjoin(str, line); SI HACEMOS STRJOIN HACE SEGMENTATION FAUL
-		printf("%s", str);
+		file_size = file_size + ft_file_size(line, file_size); // Contar el tamaño del fichero para reservar la memoria que va a ocupar str
+//		str = ft_strdup(line); 
+//		str = ft_strjoin(str, line); SI HACEMOS STRJOIN HACE SEGMENTATION FAUL (Da segmentation fault porque la string que devuelve es mayor a str)
+//		printf("%s", str);
 		free(line);
 	}
+	// A lo mejor deberiamos devolver el tamaño total del archivo para reservar la memoria para str, porque si no nos vamos de linea
 	close(fd);
 }
 

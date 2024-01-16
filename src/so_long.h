@@ -70,6 +70,7 @@ char		*ft_strdup(char *s1);
 
 char		*ft_strdup(char *s1);
 size_t		ft_strlen_custom(char *line);
+int			ft_file_size(char *str, int size);
 
 //** SPLIT **
 
