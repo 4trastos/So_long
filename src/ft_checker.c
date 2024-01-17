@@ -35,10 +35,40 @@ char	**ft_check_map(int fd, t_design *design)
 bool	ft_check_dimension(char *line, t_error *error, size_t file_size)
 {
 	int		i;
+<<<<<<< HEAD
 	size_t	len;
 
 	printf("STR en Ckec Dimension: %s\n", line);
 	printf("file_size: %zu\n", file_size);
+=======
+	int		file_size;
+
+	line = NULL;
+	file_size = 0;
+	i = 1;
+	while (i > 0)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break;
+		if (!ft_check_dimension(line, design))
+			ft_error_msg("Error de Dimensión\n", &line);
+		file_size = file_size + ft_file_size(line, file_size); // Contar el tamaño del fichero para reservar la memoria que va a ocupar str
+//		str = ft_strdup(line); 
+//		str = ft_strjoin(str, line); SI HACEMOS STRJOIN HACE SEGMENTATION FAUL (Da segmentation fault porque la string que devuelve es mayor a str)
+//		printf("%s", str);
+		free(line);
+	}
+	// A lo mejor deberiamos devolver el tamaño total del archivo para reservar la memoria para str, porque si no nos vamos de linea
+	close(fd);
+}
+
+bool	ft_check_dimension(char *line, t_design *design)
+{
+	int	i;
+	int	len;
+
+>>>>>>> 8a18abe64e13121ae67813be99222eab6559c86c
 	len = ft_strlen_custom(line);
 	printf("len: %zu\n", len);
 	if (len < 7)

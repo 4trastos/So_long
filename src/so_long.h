@@ -85,7 +85,11 @@ char		*ft_strdup(char *s1);
 
 char		*ft_strdup(char *s1);
 size_t		ft_strlen_custom(char *line);
+<<<<<<< HEAD
 void		ft_file_size(char *line, size_t *size);
+=======
+int			ft_file_size(char *str, int size);
+>>>>>>> 8a18abe64e13121ae67813be99222eab6559c86c
 
 //** SPLIT **
 
