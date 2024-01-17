@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 12:35:36 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/13 22:08:01 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/17 18:15:01 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 void	print_map(char **map)
 {
-	printf("Entra a printear mapa\n");
+	printf("Mapa:\n");
    	int i;
 	
 	i = 0;
 	while (map[i] != NULL)
 	{
-		printf("Dentro del while\n");
-		printf("Cadena %d: %s\n", i, map[i]);
 		printf("%s\n", map[i]);
 		i++;
 	}
@@ -60,8 +58,7 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		ft_error_msg("You have to upload a file to play!", NULL);
 	map = ft_check_arg(argc, argv, &design);
-	printf("Este el mapa creado: \n");
-	print_map(map); //NO PRINTA PORQUE NO LOGRO GUARDAR BIEN EL MAPA.
+	print_map(map);
 //	ft_init_game(map, design);
 	return (0);
 }

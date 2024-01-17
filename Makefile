@@ -6,7 +6,7 @@
 #    By: davgalle <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/06 12:27:32 by davgalle          #+#    #+#              #
-#    Updated: 2024/01/13 20:36:40 by davgalle         ###   ########.fr        #
+#    Updated: 2024/01/17 20:01:42 by davgalle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ SRCS = src/main.c \
 	   src/so_long_utils.c \
 	   src/get_next_line.c \
 	   src/get_next_line_utils.c \
-	   src/ft_split.c
+	   src/ft_split.c \
+	   src/create_struct.c
 
 OBJTS = $(SRCS:.c=.o)
 

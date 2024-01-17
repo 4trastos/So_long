@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 12:37:32 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/13 21:26:21 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/17 20:16:02 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,23 @@
 #  define BUFFER_SIZE 7
 # endif
 
-typedef struct	s_design {
+typedef struct	s_error {
 	char	wall;
 	char	space;
 	char	exit;
 	char	player;
 	char	enemys;
 	char	collect;
+
+}				t_error;
+
+typedef struct	s_design {
+	int	wall;
+	int	space;
+	int	exit;
+	int	player;
+	int	enemys;
+	int	collect;
 
 }				t_design;
 
@@ -46,17 +56,22 @@ char		**ft_check_arg(int argc, char **argv, t_design *design);
 int			ft_strnrcmp(char *argv, char *str, int count);
 char		**ft_check_map(int fd, t_design *design);
 bool		ft_check_dimension();
-bool		is_valid_char(char c, t_design *design);
-void		ft_read_file(int fd, t_design *design, char *str);
-bool		ft_check_dimension(char *line, t_design *design);
+bool		is_valid_char(char c, t_error *error);
+char		*ft_read_file(int fd, t_error *error, char *str, t_design *design);
+bool		ft_check_dimension(char *line, t_error *error, size_t file_size);
+bool		ft_check_realmap(char *line, t_design *design);
+void		ft_middle_map(char *str, t_design *design);
+void		ft_restmap(char *str, t_design *design);
 
 //*** errors ***
 
 void		ft_error_msg(char *msg, char **map);
+void		ft_error_map(char *msg, char *line);
 
 //** create new design node **
 
 t_design	*ft_new_design(void);
+t_error		*ft_new_error(void);
 
 //** GNL **
 
@@ -70,6 +85,7 @@ char		*ft_strdup(char *s1);
 
 char		*ft_strdup(char *s1);
 size_t		ft_strlen_custom(char *line);
+void		ft_file_size(char *line, size_t *size);
 
 //** SPLIT **
 
@@ -78,5 +94,6 @@ char		*ft_strdup_custom(const char *s, size_t n);
 char		**ft_free_str(char **aux);
 int			ft_countc(char const *s, char c);
 char		**ft_split(char const *s, char c);
+
 
 #endif

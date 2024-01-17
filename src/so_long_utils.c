@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:31:39 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/13 21:27:42 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/17 20:45:00 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,28 +28,13 @@ int	ft_strnrcmp(char *argv, char *str, int count)
 	return (0);
 }
 
-bool is_valid_char(char c, t_design *design) 
+bool is_valid_char(char c, t_error *error) 
 {
-    if (c == design->wall || c == design->space || c == design->exit ||
-            c == design->player || c == design->enemys || c == design->collect)
+	printf("Entra a validar los char\n");
+    if (c == error->wall || c == error->space || c == error->exit ||
+            c == error->player || c == error->enemys || c == error->collect)
 		return (true);
 	return (false);
-}
-
-t_design	*ft_new_design()
-{
-	t_design	*new;
-
-	new = (t_design *)malloc(sizeof(t_design));
-	if (!new)
-		return (NULL);
-	new->wall = '1';
-	new->space = '0';
-	new->exit = 'E';
-	new->player = 'P';
-	new->enemys = 'W';
-	new->collect = 'C';	
-	return (new);
 }
 
 size_t	ft_strlen_custom(char *line)
@@ -60,4 +45,12 @@ size_t	ft_strlen_custom(char *line)
 	while (line[i] != '\n')
 		i++;
 	return (i);
+}
+
+void	ft_file_size(char *str, size_t *size)
+{
+	if (*size == 0)
+		*size = ft_strlen(str);
+	else
+		*size = *size + ft_strlen(str) + 1;
 }
