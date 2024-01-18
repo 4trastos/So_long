@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:52:43 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/18 12:48:44 by nicgonza         ###   ########.fr       */
+/*   Updated: 2024/01/18 14:54:46 by nicgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,32 @@ bool	ft_check_dimension(char *line, t_error *error, size_t file_size)
 {
 	int	i;
 	size_t	len;
-
-	len = ft_strlen_custom(line);
+	char	*aux;
+	
+	if (ft_strchr(line, '\n'))
+		len = ft_strlen_custom(line);
+	else
+		len = ft_strlen(line);
 	printf("len: %zu\n", len);
+	aux = line;
 	if (len < 7)
 		return (false);
 	if (len != file_size - 1)
 		return (false);
 	i = 0;
-	while (line[i] != '\n' || line[i] != '\0')
+	while (len > 0)
 	{
-		if (!is_valid_char(line[i], error))
+		printf("entra en el while");
+		if (is_valid_char(aux[i], error) == false)
 			return (false);
 		i++;
+		len--;
 	}
 	printf("Retorna true\n");
 	return (true);
 }
 
-/*bool	ft_check_realmap(char *str, t_design *design)
+bool	ft_check_realmap(char *str, t_design *design)
 {
 	design = ft_new_design();
 	ft_middle_map(str, design);
@@ -66,7 +73,7 @@ void	ft_middle_map(char *str, t_design *design)
 	design->wall = x;
 	design->space = y;
 	design->exit = z;
-}*/
+}
 
 char	*ft_read_file(int fd, t_error *error, char *str, t_design *design)
 {
@@ -83,19 +90,23 @@ char	*ft_read_file(int fd, t_error *error, char *str, t_design *design)
 		line = get_next_line(fd);
 		printf("Linea: %s\n", line);
 		if (!line)
-			break;
+		{
+			free(line);
+			close(fd);
+			return (str);
+		}
 		if (file_size == 0)
 			ft_file_size(line, &file_size);
-		if (!ft_check_dimension(line, error, file_size))
+		printf("file_size: %zu\n", file_size);
+		if (ft_check_dimension(line, error, file_size) == false)
 			ft_error_map("Mapa no válido1", line);
 		str = ft_strjoin(str, line);
 		printf("STR despues del JOIN: \n%s\n", str);
 		free(line);
 	}
-	close(fd);
 	/*if (!ft_check_realmap(str, design)) // check de mapa jugable o no.
 		ft_error_map("Mapa no válido", str);*/
-	return (str);
+	return ;
 }
 
 char	**ft_check_map(int fd, t_design *design)
