@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 20:00:30 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/17 20:17:29 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/18 19:48:55 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,9 @@ void	ft_restmap(char *str, t_design *design)
 	design->player = x;
 	design->enemys = y;
 	design->collect = z;
+}
+void	ft_completemap(char *str, t_design *design)
+{
+	ft_middle_map(str, design);
+	ft_restmap(str, design);
 }

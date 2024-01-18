@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 12:37:32 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/17 20:16:02 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/18 19:42:54 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ typedef struct	s_game {
 
 //*** check map ***
 
-char		**ft_check_arg(int argc, char **argv, t_design *design);
+char		**ft_check_arg(int argc, char **argv, t_design *design, char **map);
 int			ft_strnrcmp(char *argv, char *str, int count);
-char		**ft_check_map(int fd, t_design *design);
+char		**ft_check_map(int fd, t_design *design, char **map);
 bool		ft_check_dimension();
 bool		is_valid_char(char c, t_error *error);
 char		*ft_read_file(int fd, t_error *error, char *str, t_design *design);
 bool		ft_check_dimension(char *line, t_error *error, size_t file_size);
-bool		ft_check_realmap(char *line, t_design *design);
+bool		ft_check_realmap(char **map);
 void		ft_middle_map(char *str, t_design *design);
 void		ft_restmap(char *str, t_design *design);
 
@@ -67,13 +67,15 @@ void		ft_restmap(char *str, t_design *design);
 
 void		ft_error_msg(char *msg, char **map);
 void		ft_error_map(char *msg, char *line);
+void		ft_freemap(char *msg, char **map);
 
 //** create new design node **
 
 t_design	*ft_new_design(void);
 t_error		*ft_new_error(void);
+void		ft_completemap(char *str, t_design *design);
 
-//** GNL **
+//** get next line **
 
 char		*get_next_line(int fd);
 size_t		ft_strlen(char *str);
@@ -85,11 +87,8 @@ char		*ft_strdup(char *s1);
 
 char		*ft_strdup(char *s1);
 size_t		ft_strlen_custom(char *line);
-<<<<<<< HEAD
 void		ft_file_size(char *line, size_t *size);
-=======
-int			ft_file_size(char *str, int size);
->>>>>>> 8a18abe64e13121ae67813be99222eab6559c86c
+char		**ft_free_map(char **map);
 
 //** SPLIT **
 
@@ -99,5 +98,7 @@ char		**ft_free_str(char **aux);
 int			ft_countc(char const *s, char c);
 char		**ft_split(char const *s, char c);
 
+//** GAME **
 
+void		ft_init_game(char **map, t_design *design);
 #endif

@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:52:43 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/18 20:22:12 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/18 20:20:58 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,14 @@ bool	ft_check_realmap(char **map)
 {
 	int	x;
 	int	y;
+	int	len;
 	int	count;
 
 	y = 0;
 	count = 0;
 	printf("Entra a recorrer **map\n");
+	len = ft_strlen_custom(*map);
+	printf("Longitud de X %i\n", len);
 	while (map[y] != '\0')
 	{
 		x = 0;

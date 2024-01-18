@@ -6,7 +6,7 @@
 #    By: davgalle <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/06 12:27:32 by davgalle          #+#    #+#              #
-#    Updated: 2024/01/17 20:01:42 by davgalle         ###   ########.fr        #
+#    Updated: 2024/01/18 18:54:14 by davgalle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ SRCS = src/main.c \
 	   src/get_next_line.c \
 	   src/get_next_line_utils.c \
 	   src/ft_split.c \
-	   src/create_struct.c
+	   src/create_struct.c \
+	   src/init_game.c
 
 OBJTS = $(SRCS:.c=.o)
 

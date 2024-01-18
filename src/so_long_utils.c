@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:31:39 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/17 20:45:00 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/18 19:40:06 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,23 @@ int	ft_strnrcmp(char *argv, char *str, int count)
 
 bool is_valid_char(char c, t_error *error) 
 {
-	printf("Entra a validar los char\n");
-    if (c == error->wall || c == error->space || c == error->exit ||
-            c == error->player || c == error->enemys || c == error->collect)
+	t_error	*aux;
+
+	aux = error;
+    if (c == aux->wall) 
 		return (true);
-	return (false);
+	else if (c == aux->space)
+		return (true);
+	else if (c == aux->exit)
+		return (true);
+	else if (c == aux->player) 
+		return (true);
+	else if (c == aux->enemys) 
+		return (true);
+	else if (c == aux->collect)
+		return (true);
+	else
+		return (false);
 }
 
 size_t	ft_strlen_custom(char *line)
@@ -47,24 +59,24 @@ size_t	ft_strlen_custom(char *line)
 	return (i);
 }
 
-<<<<<<< HEAD
 void	ft_file_size(char *str, size_t *size)
 {
 	if (*size == 0)
 		*size = ft_strlen(str);
 	else
 		*size = *size + ft_strlen(str) + 1;
-=======
-int		ft_file_size(char *str, int size)
+}
+
+char	**ft_free_map(char **map)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while (str[i] != '\n' || str[i] != '\0')
+	while (map[i])
 	{
+		free(map[i]);
 		i++;
-		size++;
 	}
-	return (size);
->>>>>>> 8a18abe64e13121ae67813be99222eab6559c86c
+	free(map);
+	return (NULL);
 }

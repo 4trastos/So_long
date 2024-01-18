@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:26:42 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/13 16:31:51 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/18 15:56:12 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,20 +102,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = ft_line(board);
 	board = ft_new_line(board);
+	if (!line)
+		return (NULL);
 	return (line);
 }
-/*
-int main(void)
-{	
-	int fd = open("only_nl.txt", O_RDONLY);
-	char *line;
-
-     while ((line = get_next_line(fd)) != NULL)
-    {
-        printf("%s", line);
-        free(line);
-    }
-
-    close(fd);
-    return 0;
-} */
