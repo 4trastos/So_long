@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:52:43 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/18 20:22:12 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/19 17:24:17 by nicgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ char	**ft_check_map(int fd, t_design *design, char **map)
 	str[0] = '\0';
 	str = ft_read_file(fd, error, str, design);
 	map = ft_split(str, '\n');
-	if (!ft_check_realmap(map))
-		ft_freemap("Mapa no jugable", map);
+	if (!ft_check_border(map))
+		ft_freemap("El mapa debe estar cerrado por muros", map);
+	if (!ft_map_completable)
+		ft_freemap("El mapa no es completable", map);
 	free(str);
 	free(error);
 	return (map);
@@ -56,7 +58,61 @@ bool	ft_check_dimension(char *line, t_error *error, size_t file_size)
 	return (true);
 }
 
-bool	ft_check_realmap(char **map)
+bool	ft_check_border(char **map)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (map[y] != '\0')
+	{
+		x = 0;
+		while (map[y][x] != '\0')
+		{
+			if ((y == 0 || y == ft_getY(map)) && map[y][x] == '1')
+				x++;
+			if (y != 0 && y != ft_getY(map))
+			{
+				if ((x == 0 || x == ft_getX(map)) && map[y][x] != '1')
+					return (false);
+				else
+					x++;
+			}
+		}
+		y++;
+	}
+	return (true);
+}
+
+bool	ft_map_completable(char **map)
+{
+	int		y;
+	int 	x;
+	bool	b;
+
+	y = 1;
+	b = true;
+	while (map[y] != '\0')
+	{
+		x = 1;
+		while (map[y][x] != '\0')
+		{
+			if(map[y][x] != '1')
+			{
+				if (map[y][x + 1] == '1' && map[y][x - 1] == '1' && map[y + 1][x] == '1' && map[y - 1][x] == '1')
+					b = false;
+				else
+					x++;
+			}
+			else
+				x++;
+		}
+		y++;
+	}
+	return (b);
+}
+
+/*bool	ft_check_realmap(char **map)
 {
 	int	x;
 	int	y;
@@ -108,7 +164,7 @@ void	ft_middle_map(char *str, t_design *design)
 	design->wall = x;
 	design->space = y;
 	design->exit = z;
-}
+}*/
 
 char	*ft_read_file(int fd, t_error *error, char *str, t_design *design)
 {
@@ -118,6 +174,7 @@ char	*ft_read_file(int fd, t_error *error, char *str, t_design *design)
 
 	line = NULL;
 	file_size = 0;
+	design = NULL;
 	i = 1;
 	while (i > 0)
 	{
@@ -135,6 +192,6 @@ char	*ft_read_file(int fd, t_error *error, char *str, t_design *design)
 		free(line);
 	}
 	close(fd);
-	ft_completemap(str, design);
+	//ft_completemap(str, design);
 	return (str);
 }
