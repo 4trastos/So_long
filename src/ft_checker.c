@@ -6,7 +6,11 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:52:43 by davgalle          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/01/19 23:32:18 by davgalle         ###   ########.fr       */
+=======
+/*   Updated: 2024/01/19 17:24:17 by nicgonza         ###   ########.fr       */
+>>>>>>> 0fbf807ecc8f521bf47369e2689876e73312870e
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +31,15 @@ char	**ft_check_map(int fd, t_design *design, char **map)
 	map = ft_split(str, '\n');
 	if (!ft_check_border(map))
 		ft_freemap("El mapa debe estar cerrado por muros", map);
+<<<<<<< HEAD
 	if (!ft_feasible_map(map))
 		ft_freemap("El mapa no es completable", map);
 //	if (!ft_check_realmap(map))
 //		ft_freemap("Mapa no jugable", map);
+=======
+	if (!ft_map_completable)
+		ft_freemap("El mapa no es completable", map);
+>>>>>>> 0fbf807ecc8f521bf47369e2689876e73312870e
 	free(str);
 	free(error);
 	return (map);
@@ -66,6 +75,7 @@ bool	ft_check_border(char **map)
 	int	y;
 
 	y = 0;
+<<<<<<< HEAD
 	printf("Entra a buscar muros\n");
 	while (map[y] != '\0')
 	{
@@ -90,16 +100,36 @@ bool	ft_check_border(char **map)
 				printf("Entra a recorrer la segunda línea\n");
 				if ((x == 0 || x == ft_getX(map)) && map[y][x] != '1')
 					return (printf("Muros false\n"), false);
+=======
+	while (map[y] != '\0')
+	{
+		x = 0;
+		while (map[y][x] != '\0')
+		{
+			if ((y == 0 || y == ft_getY(map)) && map[y][x] == '1')
+				x++;
+			if (y != 0 && y != ft_getY(map))
+			{
+				if ((x == 0 || x == ft_getX(map)) && map[y][x] != '1')
+					return (false);
+>>>>>>> 0fbf807ecc8f521bf47369e2689876e73312870e
 				else
 					x++;
 			}
 		}
 		y++;
 	}
+<<<<<<< HEAD
 	return (printf("Cerrados por muros TRUE\n"), true);
 }
 
 bool	ft_feasible_map(char **map)
+=======
+	return (true);
+}
+
+bool	ft_map_completable(char **map)
+>>>>>>> 0fbf807ecc8f521bf47369e2689876e73312870e
 {
 	int		y;
 	int 	x;
@@ -127,8 +157,12 @@ bool	ft_feasible_map(char **map)
 	return (b);
 }
 
+<<<<<<< HEAD
 /*
 bool	ft_check_realmap(char **map)
+=======
+/*bool	ft_check_realmap(char **map)
+>>>>>>> 0fbf807ecc8f521bf47369e2689876e73312870e
 {
 	int	x;
 	int	y;
@@ -180,7 +214,7 @@ void	ft_middle_map(char *str, t_design *design)
 	design->wall = x;
 	design->space = y;
 	design->exit = z;
-}
+}*/
 
 char	*ft_read_file(int fd, t_error *error, char *str, t_design *design)
 {
@@ -190,6 +224,7 @@ char	*ft_read_file(int fd, t_error *error, char *str, t_design *design)
 
 	line = NULL;
 	file_size = 0;
+	design = NULL;
 	i = 1;
 	while (i > 0)
 	{
@@ -207,6 +242,6 @@ char	*ft_read_file(int fd, t_error *error, char *str, t_design *design)
 		free(line);
 	}
 	close(fd);
-	ft_completemap(str, design);
+	//ft_completemap(str, design);
 	return (str);
 }

@@ -6,7 +6,11 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 12:37:32 by davgalle          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/01/19 23:30:37 by davgalle         ###   ########.fr       */
+=======
+/*   Updated: 2024/01/19 16:44:17 by nicgonza         ###   ########.fr       */
+>>>>>>> 0fbf807ecc8f521bf47369e2689876e73312870e
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +63,15 @@ bool		ft_check_dimension();
 bool		is_valid_char(char c, t_error *error);
 char		*ft_read_file(int fd, t_error *error, char *str, t_design *design);
 bool		ft_check_dimension(char *line, t_error *error, size_t file_size);
+<<<<<<< HEAD
 //bool		ft_check_realmap(char **map);
 bool		ft_feasible_map(char **map);
 bool		ft_check_border(char **map);
+=======
+bool		ft_check_realmap(char **map);
+bool		ft_check_border(char **map);
+bool		ft_map_completable(char **map);
+>>>>>>> 0fbf807ecc8f521bf47369e2689876e73312870e
 void		ft_middle_map(char *str, t_design *design);
 void		ft_restmap(char *str, t_design *design);
 
@@ -92,7 +102,10 @@ size_t		ft_strlen_custom(char *line);
 void		ft_file_size(char *line, size_t *size);
 char		**ft_free_map(char **map);
 int			ft_getY(char **map);
+<<<<<<< HEAD
 //bool		ft_getY(char **map);
+=======
+>>>>>>> 0fbf807ecc8f521bf47369e2689876e73312870e
 int			ft_getX(char **map);
 
 //** SPLIT **
