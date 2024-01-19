@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:31:39 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/19 16:11:45 by nicgonza         ###   ########.fr       */
+/*   Updated: 2024/01/18 19:40:06 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,26 +79,4 @@ char	**ft_free_map(char **map)
 	}
 	free(map);
 	return (NULL);
-}
-
-int	ft_getX(char **map)
-{
-	int x;
-	int y;
-
-	y = 0;
-	x = 0;
-	while(map[y][x] != '\0')
-		x++;
-	return (x);
-}
-
-int ft_getY(char **map)
-{
-	int y;
-
-	y = 0;
-	while (map[y] != '\0')
-		y++;
-	return (y);
 }
