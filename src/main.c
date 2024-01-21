@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 12:35:36 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/18 20:14:36 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/21 17:54:21 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_map(char **map)
 {
-	printf("Mapa:\n");
+	printf("Map:\n");
    	int i;
 	
 	i = 0;

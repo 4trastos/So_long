@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 20:00:30 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/18 19:48:55 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/21 16:14:28 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,35 +42,4 @@ t_error	*ft_new_error()
 	new->enemys = 'W';
 	new->collect = 'C';	
 	return (new);
-}
-
-void	ft_restmap(char *str, t_design *design)
-{
-	int	i;
-	int	x;
-	int	y;
-	int	z;
-
-	x = 0;
-	y = 0;
-	z = 0;
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == 'P')
-			x++;
-		if (str[i] == 'W')
-			y++;
-		if (str[i] == 'C')
-			z++;
-		i++;
-	}
-	design->player = x;
-	design->enemys = y;
-	design->collect = z;
-}
-void	ft_completemap(char *str, t_design *design)
-{
-	ft_middle_map(str, design);
-	ft_restmap(str, design);
 }
