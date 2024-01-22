@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 15:28:47 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/21 19:50:33 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/22 19:03:58 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,26 +81,56 @@ bool	ft_singleline(char **map, size_t boxes)
 	return (true);
 }
 
-bool	ft_multiplelines(char **map, size_t play_lines, size_t boxes) // Esto no está probado ni terminado
+bool	ft_multiplelines(char **map, size_t play_lines, size_t boxes, t_design *design)
 {
-	size_t	y;
 	size_t	x;
-	size_t borrar;
+	size_t	z;
+
+	x = boxes;
+	z = play_lines;
+	if (!ft_ifpow(map, design))
+		return (false);
+	if (!ft_solvemap(map, design))
+		return (false);
+// Hay que volver a leer el mapa o copiarlo en una aux, trabajar con la aux y despues de demostrar que se puede
+// resover liberar aux.	
+	return (true);
+}
+
+bool	ft_ifpow(char **map, t_design *design)
+{
+	size_t	x;
+	size_t	y;
 
 	y = 1;
-	borrar = play_lines;
-	while (map[y + 1] != NULL)
+	while (map[y] != NULL)
 	{
 		x = 1;
-		while (map[y][x + 1] != '\0')
+		while (map[y][x] != '\0')
 		{
-			if (map[y][x] == '0' || map[y][x] == 'E' || map[y][x] == 'C' || map[y][x] == 'P')
+			if (map[y][x] == 'P')
 			{
 				if (map[y][x + 1] == '1' && map[y][x - 1] == '1' && map[y + 1][x] == '1' && map[y - 1][x] == '1')
 					return (false);
+				design->yp = y;
+				design->xp = x;
+				x++;
 			}
-			if (map[y][x] == '1' && x != boxes)
-				return (false);
+			if (map[y][x] == 'E')
+			{
+				if (map[y][x + 1] == '1' && map[y][x - 1] == '1' && map[y + 1][x] == '1' && map[y - 1][x] == '1')
+					return (false);
+				design->ye = y;
+				design->xe = x;
+				x++;
+			}
+			if (map[y][x] == 'C')
+			{
+				if (map[y][x + 1] == '1' && map[y][x - 1] == '1' && map[y + 1][x] == '1' && map[y - 1][x] == '1')
+					return (false);
+				design->yc = y;
+				design->xc = x;
+			}
 			x++;
 		}
 		y++;

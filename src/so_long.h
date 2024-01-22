@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 12:37:32 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/21 19:12:47 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/22 17:43:07 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,18 @@ typedef struct	s_error {
 }				t_error;
 
 typedef struct	s_design {
-	int	wall;
-	int	space;
-	int	exit;
-	int	player;
-	int	enemys;
-	int	collect;
+	int		wall;
+	int		space;
+	int		exit;
+	int		player;
+	int		enemys;
+	int		collect;
+	size_t	yp;
+	size_t	xp;
+	size_t	yc;
+	size_t	xc;
+	size_t	ye;
+	size_t	xe;
 
 }				t_design;
 
@@ -59,12 +65,13 @@ bool		ft_check_dimension();
 bool		is_valid_char(char c, t_error *error);
 char		*ft_read_file(int fd, t_error *error, char *str, t_design *design);
 bool		ft_check_dimension(char *line, t_error *error, size_t file_size);
-bool		ft_feasible_map(char **map);
+bool		ft_feasible_map(char **map, t_design *design);
 bool		ft_check_border(char **map);
 bool		ft_middle_map(char *str, t_design *design);
 bool		ft_restmap(char *str, t_design *design);
 bool		ft_singleline(char **map, size_t boxes);
-bool		ft_multiplelines(char **map, size_t play_lines, size_t boxes);
+bool		ft_multiplelines(char **map, size_t play_lines, size_t boxes, t_design *design);
+bool		ft_solvemap(char **map, t_design *design);
 
 //*** errors ***
 
@@ -96,6 +103,7 @@ bool		ft_getY(char **map, int c);
 bool		ft_getX(char **map, int c);
 size_t		ft_playlines(char **map);
 size_t		ft_countboxes(char **map);
+bool		ft_ifpow(char **map, t_design *design);
 
 //** SPLIT **
 
@@ -108,4 +116,5 @@ char		**ft_split(char const *s, char c);
 //** GAME **
 
 void		ft_init_game(char **map, t_design *design);
+void		print_map(char **map);
 #endif

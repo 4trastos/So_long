@@ -6,7 +6,7 @@
 #    By: davgalle <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/06 12:27:32 by davgalle          #+#    #+#              #
-#    Updated: 2024/01/21 18:53:02 by davgalle         ###   ########.fr        #
+#    Updated: 2024/01/22 16:00:34 by davgalle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ SRCS = src/main.c \
 	   src/create_struct.c \
 	   src/init_game.c \
 	   src/aux_utils.c \
-	   src/more_utils.c
+	   src/more_utils.c \
+	   src/solvemap.c
 
 OBJTS = $(SRCS:.c=.o)
 

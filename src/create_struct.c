@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 20:00:30 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/21 16:14:28 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/22 17:23:12 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,13 @@ t_design	*ft_new_design()
 	new->exit = 0;
 	new->player = 0;
 	new->enemys = 0;
-	new->collect = 0;	
+	new->collect = 0;
+	new->yp = 0;
+	new->xp = 0;
+	new->yc = 0;
+	new->xc = 0;
+	new->ye = 0;
+	new->xe = 0;
 	return (new);
 }
 
