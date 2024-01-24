@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 12:37:32 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/22 17:43:07 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:35:47 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ bool		ft_getX(char **map, int c);
 size_t		ft_playlines(char **map);
 size_t		ft_countboxes(char **map);
 bool		ft_ifpow(char **map, t_design *design);
+char		**ft_matrixdup(char **map);
 
 //** SPLIT **
 

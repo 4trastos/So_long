@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:52:43 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/22 15:29:38 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:33:43 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 char	**ft_check_map(int fd, t_design *design, char **map)
 {
 	char	*str;
+	char	**aux;
 	t_error	*error;
 
 	str = NULL;
@@ -27,10 +28,12 @@ char	**ft_check_map(int fd, t_design *design, char **map)
 	map = ft_split(str, '\n');
 	if (!ft_check_border(map))
 		ft_freemap("The map must be closed by walls", map);
-	if (!ft_feasible_map(map, design))
-		ft_freemap("The map is not feasible", map);
+	aux = ft_matrixdup(map); //crear el agoritmo que duplica un doble puntero.//
+	if (!ft_feasible_map(aux, design))
+		ft_freemap("The map is not feasible", aux);
 	free(str);
 	free(error);
+	free(aux);
 	return (map);
 }
 
