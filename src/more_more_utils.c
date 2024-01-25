@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 17:33:24 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/25 16:19:48 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/25 18:34:36 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,18 @@ char	**ft_matrixdup(char **map)
 	char	**copy;
 	size_t	y;
 	size_t	x;
+	size_t	i;
 
 	y = ft_playlines(map) + 2;
-	x = ft_countboxes(map) + 1;
-	copy = (char *)malloc(sizeof(char *) * y);
+	x = ft_countboxes(map) + 3;
+	copy = (char **)malloc(x * y);
 	if (!copy)
 		return (NULL);
 	y = 0;
 	while (map[y] != NULL)
 	{
-		x = 0;
-		copy[y] = (char *)malloc(sizeof(char *) x);
+		i = 0;
+		copy[y] = (char *)malloc(sizeof(char) * x);
 		if (!copy[y])
 		{
 			while (y > 0)
@@ -35,19 +36,19 @@ char	**ft_matrixdup(char **map)
 			free(copy);
 			return (NULL);
 		}
-		while (map[y][x] != '\0')
+		while (map[y][i] != '\0')
 		{
-			copy[y][x] = map[y][x];
-			x++;
+			copy[y][i] = map[y][i];
+			i++;
 		}
-		copy[y][x] = '\0';
+		copy[y][i] = '\0';
 		y++;
 	}
 	copy[y] = NULL;
 	return (copy);
 }
 
-char	**ft_reload(char **map)
+char	**ft_reload(char **map, t_design *design)
 {
 	size_t	y;
 	size_t	x;
@@ -63,7 +64,7 @@ char	**ft_reload(char **map)
 			if (map[y][x] == 'C')
 			{
 				design->yc = y;
-				design->xc = c;
+				design->xc = x;
 			}
 			x++;
 		}

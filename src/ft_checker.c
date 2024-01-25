@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_checker.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:52:43 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/24 17:33:43 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/25 18:06:39 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 char	**ft_check_map(int fd, t_design *design, char **map)
 {
 	char	*str;
-	char	**aux;
+	char	**copy;
 	t_error	*error;
 
 	str = NULL;
+	copy = NULL;
 	error = ft_new_error();
 	str = malloc(1);
 	if (!str)
@@ -28,12 +29,12 @@ char	**ft_check_map(int fd, t_design *design, char **map)
 	map = ft_split(str, '\n');
 	if (!ft_check_border(map))
 		ft_freemap("The map must be closed by walls", map);
-	aux = ft_matrixdup(map); //crear el agoritmo que duplica un doble puntero.//
-	if (!ft_feasible_map(aux, design))
-		ft_freemap("The map is not feasible", aux);
+	copy = ft_matrixdup(map);
+	if (!ft_feasible_map(copy, design))
+		ft_freemap("The map is not feasible", copy);
 	free(str);
 	free(error);
-	free(aux);
+	free(copy);
 	return (map);
 }
 
@@ -79,7 +80,7 @@ bool	ft_check_border(char **map)
 				else
 					x++;
 			}
-			if (y != 0)
+			else if (y != 0)
 			{
 				if ((x == 0 && map[y][x] != '1') || (ft_getX(map, x) && map[y][x] != '1'))
 					return (false);
@@ -101,7 +102,7 @@ bool	ft_feasible_map(char **map, t_design *design)
 	play_lines = ft_playlines(map);
 	if (play_lines == 1 && ft_singleline(map, boxes))
 		return (true);
-	if (play_lines > 1 && ft_multiplelines(map, play_lines, boxes, design))
+	else if (ft_multiplelines(map, play_lines, boxes, design))
 		return (true);
 	return (false);
 }

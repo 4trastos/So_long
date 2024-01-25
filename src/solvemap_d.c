@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:49:00 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/25 19:47:04 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/25 18:33:26 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,21 @@
 
 bool	ft_solvemap(char **map, t_design *design)
 {
-//	printf("Entra el mapa\n");
-//	prinf_map(map);
+	print_map(map);
 	if (design->collect == 0 && design->exit == 0) //Check de recursividad//
 		return (true);
-	if (design->collect > 0) //Si hay coleccionables//
+	if (design->collect != 0) //Si hay coleccionables//
 	{
-		printf("Tiene coleccionables\n");
-//		if (design->yc != design->yp && design->xc != design->xp) AQUI NO ENTRA EN LA PUTA VIDA!!!!!!!!
-//		if ((design->xc && design->yc) != (design->xp && design->yp))
-		if (design->yc == design->yp)
+		if (design->yc != design->yp && design->xc != design->xp)
 		{
-			printf("estan en la misma linea 1:\n");
 			if (design->yc == design->yp)//si estan en la misma linea//
 			{
-				printf("Esta en la misma linea 2:\n");
 				if (design->xc < design->xp)
 				{
 					if (design->xp - 1 != '1' || design->xp - 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							design->collect = design->collect -1;
-							printf("Ha encontrado un C\n");
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -49,13 +36,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 
@@ -64,13 +44,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp++;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 
@@ -79,13 +52,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp++;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -93,13 +59,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp++;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -107,13 +66,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -124,13 +76,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -138,13 +83,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 
@@ -153,13 +91,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp++;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -167,13 +98,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -181,20 +105,12 @@ bool	ft_solvemap(char **map, t_design *design)
 			}
 			else if (design->xc == design->xp)
 			{
-				printf("Esta en la misma columna:\n");
 				if (design->yc < design->yp)//si está arriba//
 				{
 					if (design->yp - 1 != '1' || design->yp -1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -202,13 +118,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -216,13 +125,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 
@@ -231,13 +133,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp++;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -248,13 +143,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp++;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -262,13 +150,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -276,13 +157,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 
@@ -291,13 +165,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -312,13 +179,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -326,13 +186,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -340,13 +193,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp++;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -354,13 +200,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -371,13 +210,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -385,13 +217,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -399,13 +224,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 
@@ -414,13 +232,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp++;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -431,13 +242,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -445,13 +249,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -459,13 +256,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp++;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -473,13 +263,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -490,13 +273,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp++;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -504,13 +280,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -518,13 +287,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 
@@ -533,13 +295,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
-						if (map[design->yp][design->xp] == 'C')
-						{
-							map[design->yp][design->xp] = 'P';
-							printf("Ha encontrado un C\n");
-							design->collect = design->collect -1;
-							ft_solvemap(ft_reload(map, design), design);
-						}
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -554,21 +309,16 @@ bool	ft_solvemap(char **map, t_design *design)
 	}
 	else //Busca la salida//
 	{
-		printf("NO Tiene coleccionables\n");
-		printf("Estra a buscar la salida:\n");
-		if ((design->ye && design->xe) != (design->yp && design->xp))
+		if (design->ye != design->yp && design->xe != design->xp)
 		{
 			if (design->ye == design->yp)//si estan en la misma linea//
 			{
-				printf("Estan en la misma linea:\n");
 				if (design->xe < design->xp)
 				{
 					if (design->xp - 1 != '1' || design->xp - 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -576,8 +326,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -585,8 +333,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp++;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -594,8 +340,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -606,8 +350,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -615,8 +357,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -624,8 +364,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp++;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -633,8 +371,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -648,8 +384,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -657,8 +391,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -666,8 +398,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 
@@ -676,8 +406,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp++;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -688,8 +416,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp++;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -697,8 +423,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -706,8 +430,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 
@@ -716,8 +438,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -732,8 +452,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -741,8 +459,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -750,8 +466,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp++;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -759,8 +473,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -771,8 +483,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -780,8 +490,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -789,8 +497,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 
@@ -799,8 +505,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp++;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -811,8 +515,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -820,8 +522,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -829,8 +529,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp++;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -838,8 +536,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -850,8 +546,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp++;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -859,8 +553,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}
@@ -868,8 +560,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 
@@ -878,8 +568,6 @@ bool	ft_solvemap(char **map, t_design *design)
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
-						if (map[design->yp][design->xp] == 'E')
-							return (true);
 						map[design->yp][design->xp] = 'P';
 						ft_solvemap(map, design);
 					}

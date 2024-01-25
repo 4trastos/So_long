@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 15:28:47 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/25 14:42:28 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/25 15:44:41 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,17 +85,13 @@ bool	ft_multiplelines(char **map, size_t play_lines, size_t boxes, t_design *des
 {
 	size_t	x;
 	size_t	z;
-	char	**copy;
 
-	copy = NULL;
 	x = boxes;
 	z = play_lines;
 	if (!ft_ifpow(map, design))
 		return (false);
-	copy = ft_matrixdup(map);
-	if (!ft_solvemap(copy, design))
+	if (!ft_solvemap(map, design))
 		return (false);
-	free(copy);
 	return (true);
 }
 
