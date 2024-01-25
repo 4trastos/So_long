@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-bool	ft_solvemap(char **map. t_design *design)
+bool	ft_solvemap(char **map, t_design *design)
 {
 	if (design->collect == 0 && design->exit == 0) //Check de recursividad//
 		return (true);
@@ -22,70 +22,87 @@ bool	ft_solvemap(char **map. t_design *design)
 		{
 			if (design->yc == design->yp)//si estan en la misma linea//
 			{
-				if (desing->xc < desing->xp)
+				if (design->xc < design->xp)
 				{
 					if (design->xp - 1 != '1' || design->xp - 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->yp - 1 != '1' || design->yp - 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
+
 					}
 					if (design->yp + 1 != '1' || design->yp + 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
+
+					}
+					if (design->yp + 1 != '1' || design->yp + 1 != 'F')
+					{
+						map[design->yp][design->xp] = 'F';
+						design->yp++;
+						map[design->yp][design->xp] = 'P';
+						ft_solvemap(map, design);
+					}
+					if (design->yp + 1 != '1' || design->yp + 1 != 'F')
+					{
+						map[design->yp][design->xp] = 'F';
+						design->yp++;
+						map[design->yp][design->xp] = 'P';
+						ft_solvemap(map, design);
 					}
 					if (design->xp + 1 != '1' || design->xp + 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 				}
-				if (desing->xc > desing->xp)
+				if (design->xc > design->xp)
 				{
 					if (design->xp + 1 != '1' || design->xp + 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->yp - 1 != '1' || design->yp - 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
+
 					}
 					if (design->yp + 1 != '1' || design->yp + 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->xp - 1 != '1' || design->xp - 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 				}
 			}
-			if else (design->xc == design->xp)
+			else if (design->xc == design->xp)
 			{
 				if (design->yc < design->yp)//si está arriba//
 				{
@@ -94,21 +111,21 @@ bool	ft_solvemap(char **map. t_design *design)
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->xp - 1 != '1' || design->xp -1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
-						map[design->yp][design->xp] = 'P';	
-						ft_solvemap(map, desing);
+						map[design->yp][design->xp] = 'P';
+						ft_solvemap(map, design);
 					}
 					if (design->xp + 1 != '1' || design->xp +1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 
 					}
 					if (design->yp + 1 != '1' || design->yp +1 != 'F')
@@ -116,7 +133,7 @@ bool	ft_solvemap(char **map. t_design *design)
 						map[design->yp][design->xp] = 'F';
 						design->yp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 				}
 				if (design->yc > design->yp)//Si está abajo//
@@ -124,23 +141,23 @@ bool	ft_solvemap(char **map. t_design *design)
 					if (design->yp + 1 != '1' || design->yp + 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
-						design->y++;
+						design->yp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->xp - 1 != '1' || design->xp - 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
-						map[design->yp][design->xp] = 'P';	
-						ft_solvemap(map, desing);
+						map[design->yp][design->xp] = 'P';
+						ft_solvemap(map, design);
 					}
 					if (design->xp + 1 != '1' || design->xp + 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 
 					}
 					if (design->yp - 1 != '1' || design->yp - 1 != 'F')
@@ -148,42 +165,42 @@ bool	ft_solvemap(char **map. t_design *design)
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 				}
 
 			}
-			else 
+			else
 			{
-				if (desing->xc < desing->xp)//si está a al izquierda//
+				if (design->xc < design->xp)//si está a al izquierda//
 				{
 					if (design->xp - 1 != '1' || design->xp - 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->yp - 1 != '1' || design->yp - 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->yp + 1 != '1' || design->yp + 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->xp + 1 != '1' || design->xp + 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 				}
 				if (design->yc < design->yp)//si está arriba//
@@ -193,21 +210,21 @@ bool	ft_solvemap(char **map. t_design *design)
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->xp - 1 != '1' || design->xp -1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
-						map[design->yp][design->xp] = 'P';	
-						ft_solvemap(map, desing);
+						map[design->yp][design->xp] = 'P';
+						ft_solvemap(map, design);
 					}
 					if (design->xp + 1 != '1' || design->xp +1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 
 					}
 					if (design->yp + 1 != '1' || design->yp +1 != 'F')
@@ -215,38 +232,38 @@ bool	ft_solvemap(char **map. t_design *design)
 						map[design->yp][design->xp] = 'F';
 						design->yp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 				}
-				if (desing->xc > desing->xp)//Si está a la derecha//
+				if (design->xc > design->xp)//Si está a la derecha//
 				{
 					if (design->xp + 1 != '1' || design->xp + 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->yp - 1 != '1' || design->yp - 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->yp + 1 != '1' || design->yp + 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->xp - 1 != '1' || design->xp - 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 				}
 				if (design->yc > design->yp)//Si está abajo//
@@ -254,23 +271,23 @@ bool	ft_solvemap(char **map. t_design *design)
 					if (design->yp + 1 != '1' || design->yp + 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
-						design->y++;
+						design->yp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->xp - 1 != '1' || design->xp - 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
-						map[design->yp][design->xp] = 'P';	
-						ft_solvemap(map, desing);
+						map[design->yp][design->xp] = 'P';
+						ft_solvemap(map, design);
 					}
 					if (design->xp + 1 != '1' || design->xp + 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 
 					}
 					if (design->yp - 1 != '1' || design->yp - 1 != 'F')
@@ -278,7 +295,7 @@ bool	ft_solvemap(char **map. t_design *design)
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 				}
 			}
@@ -286,7 +303,7 @@ bool	ft_solvemap(char **map. t_design *design)
 		else
 		{
 		design->collect = design->collect - 1;
-		ft_solvemap(map, desing);
+		ft_solvemap(map, design);
 		}
 	}
 	else //Busca la salida//
@@ -295,70 +312,70 @@ bool	ft_solvemap(char **map. t_design *design)
 		{
 			if (design->ye == design->yp)//si estan en la misma linea//
 			{
-				if (desing->xe < desing->xp)
+				if (design->xe < design->xp)
 				{
 					if (design->xp - 1 != '1' || design->xp - 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->yp - 1 != '1' || design->yp - 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->yp + 1 != '1' || design->yp + 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->xp + 1 != '1' || design->xp + 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 				}
-				if (desing->xe > desing->xp)
+				if (design->xe > design->xp)
 				{
 					if (design->xp + 1 != '1' || design->xp + 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->yp - 1 != '1' || design->yp - 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->yp + 1 != '1' || design->yp + 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->xp - 1 != '1' || design->xp - 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 				}
 			}
-			if else (design->xe == design->xp)
+			else if (design->xe == design->xp)
 			{
 				if (design->ye < design->yp)//si está arriba//
 				{
@@ -367,21 +384,21 @@ bool	ft_solvemap(char **map. t_design *design)
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->xp - 1 != '1' || design->xp -1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->xp + 1 != '1' || design->xp +1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 
 					}
 					if (design->yp + 1 != '1' || design->yp +1 != 'F')
@@ -389,7 +406,7 @@ bool	ft_solvemap(char **map. t_design *design)
 						map[design->yp][design->xp] = 'F';
 						design->yp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 				}
 				if (design->ye > design->yp)//Si está abajo//
@@ -397,23 +414,23 @@ bool	ft_solvemap(char **map. t_design *design)
 					if (design->yp + 1 != '1' || design->yp + 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
-						design->y++;
+						design->yp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->xp - 1 != '1' || design->xp - 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->xp + 1 != '1' || design->xp + 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 
 					}
 					if (design->yp - 1 != '1' || design->yp - 1 != 'F')
@@ -421,42 +438,42 @@ bool	ft_solvemap(char **map. t_design *design)
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 				}
 
 			}
 			else
 			{
-				if (desing->xe < desing->xp)//si está a al izquierda//
+				if (design->xe < design->xp)//si está a al izquierda//
 				{
 					if (design->xp - 1 != '1' || design->xp - 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->yp - 1 != '1' || design->yp - 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->yp + 1 != '1' || design->yp + 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->xp + 1 != '1' || design->xp + 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 				}
 				if (design->ye < design->yp)//si está arriba//
@@ -466,21 +483,21 @@ bool	ft_solvemap(char **map. t_design *design)
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->xp - 1 != '1' || design->xp -1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->xp + 1 != '1' || design->xp +1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 
 					}
 					if (design->yp + 1 != '1' || design->yp +1 != 'F')
@@ -488,38 +505,38 @@ bool	ft_solvemap(char **map. t_design *design)
 						map[design->yp][design->xp] = 'F';
 						design->yp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 				}
-				if (desing->xe > desing->xp)//Si está a la derecha//
+				if (design->xe > design->xp)//Si está a la derecha//
 				{
 					if (design->xp + 1 != '1' || design->xp + 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->yp - 1 != '1' || design->yp - 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->yp + 1 != '1' || design->yp + 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->yp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->xp - 1 != '1' || design->xp - 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 				}
 				if (design->ye > design->yp)//Si está abajo//
@@ -527,23 +544,23 @@ bool	ft_solvemap(char **map. t_design *design)
 					if (design->yp + 1 != '1' || design->yp + 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
-						design->y++;
+						design->yp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->xp - 1 != '1' || design->xp - 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp--;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 					if (design->xp + 1 != '1' || design->xp + 1 != 'F')
 					{
 						map[design->yp][design->xp] = 'F';
 						design->xp++;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 
 					}
 					if (design->yp - 1 != '1' || design->yp - 1 != 'F')
@@ -551,14 +568,13 @@ bool	ft_solvemap(char **map. t_design *design)
 						map[design->yp][design->xp] = 'F';
 						design->yp--;
 						map[design->yp][design->xp] = 'P';
-						ft_solvemap(map, desing);
+						ft_solvemap(map, design);
 					}
 				}
 			}
 		}
-		else 
+		else
 			return (true);
 	}
 	return (false);
 }
-
