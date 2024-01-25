@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 17:33:24 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/25 14:55:14 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/25 16:19:48 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,29 @@ char	**ft_matrixdup(char **map)
 	}
 	copy[y] = NULL;
 	return (copy);
+}
+
+char	**ft_reload(char **map)
+{
+	size_t	y;
+	size_t	x;
+
+	y = 0;
+	while (map[y] != NULL)
+	{
+		x = 0;
+		while (map[y][x] != '\0')
+		{
+			if (map[y][x] == 'F')
+				map[y][x] = '0';
+			if (map[y][x] == 'C')
+			{
+				design->yc = y;
+				design->xc = c;
+			}
+			x++;
+		}
+		y++;
+	}
+	return (map);
 }
