@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 12:37:32 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/25 16:37:55 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/27 22:05:45 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,11 @@
 # include <mlx.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 7
+# define BUFFER_SIZE 7
+# define RIGHT -1
+# define LEFT + 1
+# define UP - 1
+# define DOWN + 1
 # endif
 
 typedef struct	s_error {
@@ -52,6 +56,14 @@ typedef struct	s_design {
 
 }				t_design;
 
+typedef struct s_move {
+	bool	right;
+	bool	left;
+	bool	up;
+	bool	down;
+
+}				t_move;
+
 typedef struct	s_game {
 
 }	t_game;
@@ -61,7 +73,6 @@ typedef struct	s_game {
 char		**ft_check_arg(int argc, char **argv, t_design *design, char **map);
 int			ft_strnrcmp(char *argv, char *str, int count);
 char		**ft_check_map(int fd, t_design *design, char **map);
-bool		ft_check_dimension();
 bool		is_valid_char(char c, t_error *error);
 char		*ft_read_file(int fd, t_error *error, char *str, t_design *design);
 bool		ft_check_dimension(char *line, t_error *error, size_t file_size);
@@ -84,6 +95,7 @@ void		ft_freemap(char *msg, char **map);
 t_design	*ft_new_design(void);
 t_error		*ft_new_error(void);
 bool		ft_completemap(char *str, t_design *design);
+t_move		*ft_new_move(void);
 
 //** get next line **
 
@@ -106,6 +118,12 @@ size_t		ft_countboxes(char **map);
 bool		ft_ifpow(char **map, t_design *design);
 char		**ft_matrixdup(char **map);
 char		**ft_reload(char **map, t_design *design);
+bool		ft_canmove(char **map, t_design *design, t_move *move);
+bool		dead_end(char **map, t_design *design, t_move *move);
+void		ft_motion(char **map, t_design *design);
+void		ft_awards(char **map, t_design *design);
+void		reset_road(char **map);
+void		to_walk(char **map, t_design *design);
 
 //** SPLIT **
 

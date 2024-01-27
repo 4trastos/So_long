@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   more_more_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 17:33:24 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/25 18:34:36 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/27 18:18:17 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ char	**ft_reload(char **map, t_design *design)
 	size_t	x;
 
 	y = 0;
+	printf("A encontrado una 'C'\n");
+	printf("Entra a actualizar el mapa\n");
 	while (map[y] != NULL)
 	{
 		x = 0;

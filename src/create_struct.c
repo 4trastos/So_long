@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_struct.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 20:00:30 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/22 17:23:12 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/27 19:38:39 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,15 @@ t_error	*ft_new_error()
 	new->player = 'P';
 	new->enemys = 'W';
 	new->collect = 'C';	
+	return (new);
+}
+
+t_move	*ft_new_move()
+{
+	t_move *new;
+
+	new = (t_move *)malloc(sizeof(t_move));
+	if (!new)
+		return (NULL);
 	return (new);
 }
