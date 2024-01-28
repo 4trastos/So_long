@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:49:00 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/27 22:22:34 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/28 12:39:34 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 bool	ft_solvemap(char **map, t_design *design)
 {
 	t_move	*move;
+	t_radar	*radar;
 
+	radar = ft_new__move();
 	move = ft_new_move();
 	while (ft_canmove(map, design, move) && (design->exit != 0 || design->collect != 0)) //Mientras que se pueda mover y haya C o E//
 	{
@@ -26,7 +28,7 @@ bool	ft_solvemap(char **map, t_design *design)
 			ft_awards(map, design); //Mira si en la posición que en la que se ha movido hay C o E.
 			ft_motion(map, design); //Mira que hay en la posición si NO ha encontrado C o E..
 		}
-		to_walk(map, design); //Se mueve buscando la prohibición menor. 0 > F > M > Z.)
+		to_walk(map, design, radar); //Se mueve buscando la prohibición menor. 0 > F > M > Z.)
 	}
 	free(move);
 	if (design->collect == 0 && design->exit == 0)

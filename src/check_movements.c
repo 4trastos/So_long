@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 18:13:40 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/27 23:06:30 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/28 13:17:32 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,20 @@ void	ft_motion(char **map, t_design *design)
 
 }
 
-void	to_walk(char **map, t_design *design) // cuando la primera opción no es 0 y  no es Z, por lo que se podría mover,  debe de moverse siempre hacia la menor prohibición (buscar < M).
+void	to_walk(char **map, t_design *design, t_design *radar)
+{
+	radar->up = (ft_up(map, design, radar));
+	radar->down = (ft_down(map. design. radar));
+	radar->right = (ft_right(map, design, radar));
+	radar->left = (ft_left(map, design, radar));
+	while ()
+	{
+		
+	}
+}
+
+/*
+void	to_walk(char **map, t_design *design)
 {
 	if (design->xp + LEFT != '1' || design->xp + LEFT != 'Z') //Busca a su derecha!//
 	{
@@ -136,4 +149,4 @@ void	to_walk(char **map, t_design *design) // cuando la primera opción no es 0 
 			design->xp--;
 		}
 	}
-}
+}*/

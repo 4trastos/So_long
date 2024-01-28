@@ -6,7 +6,7 @@
 #    By: davgalle <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/06 12:27:32 by davgalle          #+#    #+#              #
-#    Updated: 2024/01/27 20:43:58 by davgalle         ###   ########.fr        #
+#    Updated: 2024/01/28 13:33:20 by davgalle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ SRCS = src/main.c \
 	   src/solvemap.c \
 	   src/more_more_utils.c \
 	   src/check_movements.c \
-	   src/reset_road.c
+	   src/reset_road.c \
+	   src/ft_radar.c
 
 OBJTS = $(SRCS:.c=.o)
 

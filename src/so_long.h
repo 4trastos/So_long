@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 12:37:32 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/27 22:05:45 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/28 13:32:46 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,13 @@ typedef struct s_move {
 
 }				t_move;
 
+typedef struct	s_radar {
+	int		right;
+	int		left;
+	int		up;
+	int		down;
+}				t_radar;
+
 typedef struct	s_game {
 
 }	t_game;
@@ -83,6 +90,13 @@ bool		ft_restmap(char *str, t_design *design);
 bool		ft_singleline(char **map, size_t boxes);
 bool		ft_multiplelines(char **map, size_t play_lines, size_t boxes, t_design *design);
 bool		ft_solvemap(char **map, t_design *design);
+
+//*** check cursor ***
+
+void		ft_up(char **map, t_design *design, t_radar **radar);
+void		ft_down(char **map, t_design *design, t_radar **radar);
+void		ft_left(char **map, t_design *design, t_radar **radar);
+void		ft_right(char **map, t_design *design, t_radar **radar);
 
 //*** errors ***
 
@@ -123,7 +137,7 @@ bool		dead_end(char **map, t_design *design, t_move *move);
 void		ft_motion(char **map, t_design *design);
 void		ft_awards(char **map, t_design *design);
 void		reset_road(char **map);
-void		to_walk(char **map, t_design *design);
+void		to_walk(char **map, t_design *design, t_radar *radar);
 
 //** SPLIT **
 
