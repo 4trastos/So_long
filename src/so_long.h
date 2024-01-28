@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 12:37:32 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/28 13:32:46 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/28 16:31:59 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,11 @@ bool		ft_multiplelines(char **map, size_t play_lines, size_t boxes, t_design *de
 bool		ft_solvemap(char **map, t_design *design);
 
 //*** check cursor ***
-
-void		ft_up(char **map, t_design *design, t_radar **radar);
-void		ft_down(char **map, t_design *design, t_radar **radar);
-void		ft_left(char **map, t_design *design, t_radar **radar);
-void		ft_right(char **map, t_design *design, t_radar **radar);
+int			ft_up(t_design *design);
+int			ft_down(t_design *design);
+int			ft_left(t_design *design);
+int			ft_right(t_design *design);
+char		ft_return_char(char **map, t_design *design);
 
 //*** errors ***
 
@@ -110,6 +110,7 @@ t_design	*ft_new_design(void);
 t_error		*ft_new_error(void);
 bool		ft_completemap(char *str, t_design *design);
 t_move		*ft_new_move(void);
+t_radar		*ft_new_radar(void);
 
 //** get next line **
 

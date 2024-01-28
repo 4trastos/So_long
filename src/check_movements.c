@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 18:13:40 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/28 13:17:32 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/28 16:32:30 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ bool	dead_end(char **map, t_design *design, t_move *move)
 	int		i;
 
 	i = 0;
-	if (move->right = (map[design->yp][design->xp + RIGHT] == '1'))
+	if (move->right == (map[design->yp][design->xp + RIGHT] == '1'))
 		i++;
-	if (move->left = (map[design->yp][design->xp + LEFT] == '1'))
+	if (move->left == (map[design->yp][design->xp + LEFT] == '1'))
 		i++;
-	if (move->up = (map[design->yp + UP][design->xp] == '1'))
+	if (move->up == (map[design->yp + UP][design->xp] == '1'))
 		i++;
-	if (move->down = (map[design->yp + DOWN][design->xp] == '1'))
+	if (move->down == (map[design->yp + DOWN][design->xp] == '1'))
 		i++;
 	if (i == 3)
 	{
@@ -80,73 +80,31 @@ void	ft_motion(char **map, t_design *design)
 
 }
 
-void	to_walk(char **map, t_design *design, t_design *radar)
+void	to_walk(char **map, t_design *design, t_radar *radar)
 {
-	radar->up = (ft_up(map, design, radar));
-	radar->down = (ft_down(map. design. radar));
-	radar->right = (ft_right(map, design, radar));
-	radar->left = (ft_left(map, design, radar));
-	while ()
+	radar->up = (ft_up(design));
+	radar->down = (ft_down(design));
+	radar->right = (ft_right(design));
+	radar->left = (ft_left(design));
+	if (radar->up <= radar->down && radar->up <= radar->right && radar->up <= radar->left)
 	{
-		
+		map[design->yp][design->xp] = ft_return_char(map, design);
+		design->yp = design->yp + UP;
+    }
+	else if (radar->right <= radar->down && radar->right <= radar->left)
+	{
+        map[design->yp][design->xp] = ft_return_char(map, design);
+		design->yp = design->yp + DOWN;
+
+    }
+	else if (radar->down <= radar->left)
+	{
+		map[design->yp][design->xp] = ft_return_char(map, design);
+		design->xp = design->xp + RIGHT;
+    }
+	else
+    {
+		map[design->yp][design->xp] = ft_return_char(map, design);
+		design->xp = design->xp + LEFT;
 	}
 }
-
-/*
-void	to_walk(char **map, t_design *design)
-{
-	if (design->xp + LEFT != '1' || design->xp + LEFT != 'Z') //Busca a su derecha!//
-	{
-		if (design->xp + LEFT == 'C' || design->xp + LEFT == 'E')
-		{
-			design->xp++;
-			ft_awards(map, design);
-		}
-		else if (design->xp + LEFT == '0' || design->xp + LEFT == 'F' || design->xp + LEFT == 'M')
-		{
-			if (design->xp + LEFT == '0')
-				map[design->yp][design->xp] = 'F';
-			else if (design->xp + LEFT == 'F')
-				map[design->yp][design->xp] = 'M';
-			else
-				map[design->yp][design->xp] = 'Z';
-			design->xp++;
-		}
-	}
-	if (design->yp + UP != '1' || design->yp + UP != 'Z') //Busca arriba//
-	{
-		if (design->yp + UP == 'C' || design->yp + UP == 'E')
-		{
-			design->yp--;
-			ft_awards(map, design);
-		}
-		else if (design->yp + UP == '0' || design->yp + UP == 'F' || design->yp + UP == 'M')
-		{
-			if (design->yp + UP == '0')
-				map[design->yp][design->xp] = 'F';
-			else if (design->xp + UP == 'F')
-				map[design->yp][design->xp] = 'M';
-			else
-				map[design->yp][design->xp] = 'Z';
-			design->yp--;
-		}
-	}
-	if (design->xp + RIGHT != '1' || design->xp + RIGHT != 'Z') //Busca a su izquierda//
-	{
-		if (design->xp + RIGHT == 'C' || design->xp + RIGHT == 'E')
-		{
-			design->xp--;
-			ft_awards(map, design);
-		}
-		else if (design->xp + RIGHT == '0' || design->xp + RIGHT == 'F' || design->xp + RIGHT == 'M')
-		{
-			if (design->xp + RIGHT == '0')
-				map[design->yp][design->xp] = 'F';
-			else if (design->xp + RIGHT == 'F')
-				map[design->yp][design->xp] = 'M';
-			else
-				map[design->yp][design->xp] = 'Z';
-			design->xp--;
-		}
-	}
-}*/
