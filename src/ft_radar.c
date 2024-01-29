@@ -6,92 +6,114 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 12:57:45 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/28 16:31:12 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/29 18:22:17 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_up(t_design *design)
+int	ft_up(char **map, t_design *design)
 {
-	if (design->yp + UP != '1' || design->yp + UP != 'Z')
+	if (map[design->yp + UP][design->xp] != '1'
+			|| map[design->yp + UP][design->xp] != 'Z')
 	{
-		if (design->yp + UP == 'E' || design->yp + UP == 'C')
-			 return (1);
-		else if (design->yp == '0')
+		if (map[design->yp + UP][design->xp] == 'E'
+			|| map[design->yp + UP][design->xp] == 'C')
+			return (1);
+		else if (map[design->yp + UP][design->xp] == '0')
 			return (2);
-		else if (design->yp == 'F')
+		else if (map[design->yp + UP][design->xp] == 'F')
 			return (3);
-		else if (design->yp == 'M')
+		else if (map[design->yp + UP][design->xp] == 'M')
 			return (4);
 		else
-			return (-1);
+			return (5);
 	}
 	else
-		return (-1);
+		return (5);
 }
 
-int	ft_down(t_design *design)
+int	ft_down(char **map, t_design *design)
 {
-	if (design->yp + DOWN != '1' || design->yp + DOWN != 'Z')
+	if (map[design->yp + DOWN][design->xp] != '1'
+			|| map[design->yp + DOWN][design->xp] != 'Z')
 	{
-		if (design->yp + DOWN == 'E' || design->yp + DOWN == 'C')
+		if (map[design->yp + DOWN][design->xp] == 'E'
+			|| map[design->yp + DOWN][design->xp] == 'C')
 			return (1);
-		else if (design->yp == '0')
+		else if (map[design->yp + DOWN][design->xp] == '0')
 			return (2);
-		else if (design->yp == 'F')
+		else if (map[design->yp + DOWN][design->xp] == 'F')
 			return (3);
-		else if (design->yp == 'M')
+		else if (map[design->yp + DOWN][design->xp] == 'M')
 			return (4);
 		else
-			return (-1);
+			return (5);
 	}
 	else
-		return (-1);
+		return (5);
 }
 
-int	ft_right(t_design *design)
+int	ft_right(char **map, t_design *design)
 {
-	if (design->xp + RIGHT != '1' || design->xp + RIGHT != 'Z')
+	if (map[design->yp][design->xp + RIGHT] != '1'
+			|| map[design->yp][design->xp + RIGHT] != 'Z')
 	{
-		if (design->xp + RIGHT == 'E' || design->xp + RIGHT == 'C')
+		if (map[design->yp][design->xp + RIGHT] == 'E'
+			|| map[design->yp][design->xp + RIGHT] == 'C')
 			return (1);
-		else if (design->xp == '0')
+		else if (map[design->yp][design->xp + RIGHT] == '0')
 			return (2);
-		else if (design->xp == 'F')
+		else if (map[design->yp][design->xp + RIGHT] == 'F')
 			return (3);
-		else if (design->xp == 'M')
+		else if (map[design->yp][design->xp + RIGHT] == 'M')
 			return (4);
 		else
-			return (-1);
+			return (5);
 	}
 	else
-		return (-1);
+		return (5);
 }
 
-int	ft_left(t_design *design)
+int	ft_left(char **map, t_design *design)
 {
-	if (design->xp + LEFT != '1' || design->xp + LEFT != 'Z')
+	if (map[design->yp][design->xp + LEFT] != '1'
+			|| map[design->yp][design->xp + LEFT] != 'Z')
 	{
-		if (design->xp + LEFT == 'E' || design->xp + LEFT == 'C')
+		if (map[design->yp][design->xp + LEFT] == 'E'
+			|| map[design->yp][design->xp + LEFT] == 'C')
 			return (1);
-		else if (design->xp == '0')
+		else if (map[design->yp][design->xp + LEFT] == '0')
 			return (2);
-		else if (design->xp == 'F')
+		else if (map[design->yp][design->xp + LEFT] == 'F')
 			return (3);
-		else if (design->xp == 'M')
+		else if (map[design->yp][design->xp + LEFT] == 'M')
 			return (4);
 		else
-			return (-1);
+			return (5);
 	}
 	else
-		return (-1);
+		return (5);
 }
 
 char	ft_return_char(char **map, t_design *design)
 {
-	ft_awards(map, design);
-	if (map[design->yp][design->xp] == '0' || map[design->yp][design->xp] == 'P')
+	if (map[design->yp][design->xp] == 'C')
+	{
+		design->collect = design->collect - 1;
+		if (design->collect > 0 || design->exit > 0)
+			reset_road(map);
+		return ('0');
+	}
+	else if (map[design->yp][design->xp] == 'E')
+	{
+		design->exit = design->exit - 1;
+		if (design->collect > 0)
+			reset_road(map);
+		return ('0');
+	}
+	else if (map[design->yp][design->xp] == '0'
+			|| map[design->yp][design->xp] == 'P')
 		return ('F');
 	else if (map[design->yp][design->xp] == 'F')
 		return ('M');

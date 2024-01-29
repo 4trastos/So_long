@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:52:43 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/25 18:06:39 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/29 18:17:23 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ char	**ft_check_map(int fd, t_design *design, char **map)
 		ft_freemap("The map must be closed by walls", map);
 	copy = ft_matrixdup(map);
 	if (!ft_feasible_map(copy, design))
-		ft_freemap("The map is not feasible", copy);
+		ft_freedoublemap("The map is not feasible", map, copy);
 	free(str);
 	free(error);
-	free(copy);
+	ft_free_map(copy);
 	return (map);
 }
 
@@ -52,7 +52,7 @@ bool	ft_check_dimension(char *line, t_error *error, size_t file_size)
 	if (len != file_size - 1)
 		return (false);
 	i = 0;
-	while (len  > 0)
+	while (len > 0)
 	{
 		if (!is_valid_char(line[i], error))
 			return (false);
@@ -73,20 +73,14 @@ bool	ft_check_border(char **map)
 		x = 0;
 		while (map[y][x] != '\0')
 		{
-			if (y == 0 || ft_getY(map, y))
-			{
-				if (map[y][x] != '1')
-					return (false);
-				else
-					x++;
-			}
+			if ((y == 0 || ft_gety(map, y)) && map[y][x] != '1')
+				return (false);
 			else if (y != 0)
 			{
-				if ((x == 0 && map[y][x] != '1') || (ft_getX(map, x) && map[y][x] != '1'))
+				if ((x == 0 || ft_getx(map, x)) && map[y][x] != '1')
 					return (false);
-				else
-					x++;
 			}
+			x++;
 		}
 		y++;
 	}
@@ -102,7 +96,7 @@ bool	ft_feasible_map(char **map, t_design *design)
 	play_lines = ft_playlines(map);
 	if (play_lines == 1 && ft_singleline(map, boxes))
 		return (true);
-	else if (ft_multiplelines(map, play_lines, boxes, design))
+	else if (ft_multiplelines(map, design))
 		return (true);
 	return (false);
 }
@@ -110,19 +104,17 @@ bool	ft_feasible_map(char **map, t_design *design)
 char	*ft_read_file(int fd, t_error *error, char *str, t_design *design)
 {
 	char	*line;
-	int		i;
-	size_t		file_size;
+	size_t	file_size;
 
 	line = NULL;
 	file_size = 0;
-	i = 1;
-	while (i > 0)
+	while (1)
 	{
 		line = get_next_line(fd);
 		if (!line)
 		{
 			free(line);
-			break;
+			break ;
 		}
 		if (file_size == 0)
 			ft_file_size(line, &file_size);
@@ -132,7 +124,7 @@ char	*ft_read_file(int fd, t_error *error, char *str, t_design *design)
 		free(line);
 	}
 	close(fd);
-	if (!ft_completemap(str, design)) //también se contempla que hay SOLO una E y P;  y como poco una C.
+	if (!ft_completemap(str, design))
 		ft_error_map("Invalid map", line);
 	return (str);
 }

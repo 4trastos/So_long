@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 12:37:32 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/28 16:31:59 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/29 18:50:12 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,15 @@
 # include <mlx.h>
 
 # ifndef BUFFER_SIZE
-# define BUFFER_SIZE 7
-# define RIGHT -1
-# define LEFT + 1
-# define UP - 1
-# define DOWN + 1
+#  define BUFFER_SIZE 7
+#  define RIGHT -1
+#  define LEFT + 1
+#  define UP - 1
+#  define DOWN + 1
 # endif
 
-typedef struct	s_error {
+typedef struct s_error
+{
 	char	wall;
 	char	space;
 	char	exit;
@@ -40,7 +41,8 @@ typedef struct	s_error {
 
 }				t_error;
 
-typedef struct	s_design {
+typedef struct s_design
+{
 	int		wall;
 	int		space;
 	int		exit;
@@ -56,7 +58,8 @@ typedef struct	s_design {
 
 }				t_design;
 
-typedef struct s_move {
+typedef struct s_move
+{
 	bool	right;
 	bool	left;
 	bool	up;
@@ -64,16 +67,19 @@ typedef struct s_move {
 
 }				t_move;
 
-typedef struct	s_radar {
+typedef struct s_radar
+{
 	int		right;
 	int		left;
 	int		up;
 	int		down;
 }				t_radar;
 
-typedef struct	s_game {
-
-}	t_game;
+typedef struct s_game
+{
+	int	widht;
+	int	right;
+}				t_game;
 
 //*** check map ***
 
@@ -88,14 +94,14 @@ bool		ft_check_border(char **map);
 bool		ft_middle_map(char *str, t_design *design);
 bool		ft_restmap(char *str, t_design *design);
 bool		ft_singleline(char **map, size_t boxes);
-bool		ft_multiplelines(char **map, size_t play_lines, size_t boxes, t_design *design);
+bool		ft_multiplelines(char **map, t_design *design);
 bool		ft_solvemap(char **map, t_design *design);
 
 //*** check cursor ***
-int			ft_up(t_design *design);
-int			ft_down(t_design *design);
-int			ft_left(t_design *design);
-int			ft_right(t_design *design);
+int			ft_up(char **map, t_design *design);
+int			ft_down(char **map, t_design *design);
+int			ft_left(char **map, t_design *design);
+int			ft_right(char **map, t_design *design);
 char		ft_return_char(char **map, t_design *design);
 
 //*** errors ***
@@ -103,6 +109,7 @@ char		ft_return_char(char **map, t_design *design);
 void		ft_error_msg(char *msg, char **map);
 void		ft_error_map(char *msg, char *line);
 void		ft_freemap(char *msg, char **map);
+void		ft_freedoublemap(char *msg, char **map, char **copy);
 
 //** create new design node **
 
@@ -126,17 +133,13 @@ char		*ft_strdup(char *s1);
 size_t		ft_strlen_custom(char *line);
 void		ft_file_size(char *line, size_t *size);
 char		**ft_free_map(char **map);
-bool		ft_getY(char **map, int c);
-bool		ft_getX(char **map, int c);
+bool		ft_gety(char **map, int c);
+bool		ft_getx(char **map, int c);
 size_t		ft_playlines(char **map);
 size_t		ft_countboxes(char **map);
 bool		ft_ifpow(char **map, t_design *design);
 char		**ft_matrixdup(char **map);
-char		**ft_reload(char **map, t_design *design);
 bool		ft_canmove(char **map, t_design *design, t_move *move);
-bool		dead_end(char **map, t_design *design, t_move *move);
-void		ft_motion(char **map, t_design *design);
-void		ft_awards(char **map, t_design *design);
 void		reset_road(char **map);
 void		to_walk(char **map, t_design *design, t_radar *radar);
 

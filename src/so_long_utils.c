@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_utils.c                                          :+:      :+:    :+:   */
+/*   so_long_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/12 20:31:39 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/18 19:40:06 by davgalle         ###   ########.fr       */
+/*   Created: 2024/01/29 18:41:23 by davgalle          #+#    #+#             */
+/*   Updated: 2024/01/29 18:44:04 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,20 @@ int	ft_strnrcmp(char *argv, char *str, int count)
 	return (0);
 }
 
-bool is_valid_char(char c, t_error *error) 
+bool	is_valid_char(char c, t_error *error)
 {
 	t_error	*aux;
 
 	aux = error;
-    if (c == aux->wall) 
+	if (c == aux->wall)
 		return (true);
 	else if (c == aux->space)
 		return (true);
 	else if (c == aux->exit)
 		return (true);
-	else if (c == aux->player) 
+	else if (c == aux->player)
 		return (true);
-	else if (c == aux->enemys) 
+	else if (c == aux->enemys)
 		return (true);
 	else if (c == aux->collect)
 		return (true);

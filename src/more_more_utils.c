@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 17:33:24 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/27 18:18:17 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/29 18:35:11 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,31 +46,4 @@ char	**ft_matrixdup(char **map)
 	}
 	copy[y] = NULL;
 	return (copy);
-}
-
-char	**ft_reload(char **map, t_design *design)
-{
-	size_t	y;
-	size_t	x;
-
-	y = 0;
-	printf("A encontrado una 'C'\n");
-	printf("Entra a actualizar el mapa\n");
-	while (map[y] != NULL)
-	{
-		x = 0;
-		while (map[y][x] != '\0')
-		{
-			if (map[y][x] == 'F')
-				map[y][x] = '0';
-			if (map[y][x] == 'C')
-			{
-				design->yc = y;
-				design->xc = x;
-			}
-			x++;
-		}
-		y++;
-	}
-	return (map);
 }

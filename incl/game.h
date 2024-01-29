@@ -1,22 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game.c                                        :+:      :+:    :+:   */
+/*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 18:53:30 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/29 18:50:14 by davgalle         ###   ########.fr       */
+/*   Created: 2024/01/29 18:51:47 by davgalle          #+#    #+#             */
+/*   Updated: 2024/01/29 18:52:46 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#ifndef GAME_H
+# define GAME_H
 
-void	ft_init_game(char **map, t_design *design)
-{
-	char		**aux;
-	t_design	*auxx;
-
-	aux = map;
-	auxx = design;
-}
+#endif

@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 19:31:45 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/18 19:42:21 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/29 18:19:29 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	ft_error_msg(char *msg, char **map)
 {
-	if (map)
-		free (map);
 	int	i;
 
+	if (map)
+		free (map);
 	i = 0;
 	while (msg[i] != '\0')
 	{
@@ -30,10 +30,10 @@ void	ft_error_msg(char *msg, char **map)
 
 void	ft_error_map(char *msg, char *line)
 {
-	if (line)
-		free (line);
 	int	i;
 
+	if (line)
+		free (line);
 	i = 0;
 	while (msg[i] != '\0')
 	{
@@ -63,4 +63,18 @@ void	ft_freemap(char *msg, char **map)
 	}
 	write(1, "\n", 1);
 	exit (0);
+}
+
+void	ft_freedoublemap(char *msg, char **map, char **copy)
+{
+	int	i;
+
+	i = 0;
+	while (copy[i])
+	{
+		free(copy[i]);
+		i++;
+	}
+	free(copy);
+	ft_freemap(msg, map);
 }

@@ -6,13 +6,13 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 20:00:30 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/28 15:38:01 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/29 18:05:42 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_design	*ft_new_design()
+t_design	*ft_new_design(void)
 {
 	t_design	*new;
 
@@ -34,7 +34,7 @@ t_design	*ft_new_design()
 	return (new);
 }
 
-t_error	*ft_new_error()
+t_error	*ft_new_error(void)
 {
 	t_error	*new;
 
@@ -46,13 +46,13 @@ t_error	*ft_new_error()
 	new->exit = 'E';
 	new->player = 'P';
 	new->enemys = 'W';
-	new->collect = 'C';	
+	new->collect = 'C';
 	return (new);
 }
 
-t_move	*ft_new_move()
+t_move	*ft_new_move(void)
 {
-	t_move *new;
+	t_move	*new;
 
 	new = (t_move *)malloc(sizeof(t_move));
 	if (!new)
@@ -60,7 +60,7 @@ t_move	*ft_new_move()
 	return (new);
 }
 
-t_radar	*ft_new_radar()
+t_radar	*ft_new_radar(void)
 {
 	t_radar	*new;
 
@@ -70,7 +70,6 @@ t_radar	*ft_new_radar()
 	new->up = 0;
 	new->down = 0;
 	new->left = 0;
-	new->right = 0;	
+	new->right = 0;
 	return (new);
 }
-

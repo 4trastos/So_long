@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 12:35:36 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/25 18:32:08 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/29 18:30:27 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	print_map(char **map)
 {
+	int	i;
+
 	printf("Map:\n");
-   	int i;
-	
 	i = 0;
 	while (map[i] != NULL)
 	{
@@ -40,7 +40,7 @@ char	**ft_check_arg(int argc, char **argv, t_design *design, char **map)
 	if (fd < 0)
 	{
 		perror("Error opening file!");
-	   	exit(EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	if (ft_strnrcmp(argv[1], ".ber", 4))
 		ft_error_msg("The file is invalid, use a .ber file!", NULL);
@@ -58,7 +58,7 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		ft_error_msg("You have to upload a file to play!", NULL);
 	map = ft_check_arg(argc, argv, design, map);
-//	print_map(map);
+	print_map(map);
 	free(design);
 	ft_free_map(map);
 //	ft_init_game(map, design);

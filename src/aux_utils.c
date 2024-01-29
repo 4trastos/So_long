@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   aux_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 21:13:01 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/25 17:56:48 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/29 17:43:15 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-bool	ft_getY(char **map, int c)
+bool	ft_gety(char **map, int c)
 {
 	int	i;
-	int result;
+	int	result;
 
 	i = 0;
 	while (map[i] != NULL)
@@ -27,15 +27,15 @@ bool	ft_getY(char **map, int c)
 		return (false);
 }
 
-bool	ft_getX(char **map, int c)
+bool	ft_getx(char **map, int c)
 {
-	int x;
-	int y;
-	int result;
+	int	x;
+	int	y;
+	int	result;
 
 	y = 0;
 	x = 0;
-	while(map[y][x] != '\0')
+	while (map[y][x] != '\0')
 		x++;
 	result = x -1;
 	if (result == c)
@@ -57,12 +57,9 @@ bool	ft_middle_map(char *str, t_design *design)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == '1')
-			x++;
-		if (str[i] == '0')
-			y++;
-		if (str[i] == 'E')
-			z++;
+		x += (str[i] == '1');
+		y += (str[i] == '0');
+		z += (str[i] == 'E');
 		i++;
 	}
 	design->wall = x;
@@ -87,12 +84,9 @@ bool	ft_restmap(char *str, t_design *design)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == 'P')
-			x++;
-		if (str[i] == 'W')
-			y++;
-		if (str[i] == 'C')
-			z++;
+		x += (str[i] == 'P');
+		y += (str[i] == 'W');
+		z += (str[i] == 'C');
 		i++;
 	}
 	design->player = x;
