@@ -6,13 +6,14 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 12:37:32 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/29 18:50:12 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/30 17:56:56 by nicgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+# include "mlx.h"
 # include <string.h>
 # include <stdio.h>
 # include <unistd.h>
@@ -20,7 +21,6 @@
 # include <stdbool.h>
 # include <limits.h>
 # include <fcntl.h>
-# include <mlx.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 7
@@ -30,6 +30,17 @@
 #  define DOWN + 1
 # endif
 
+//** STRUCT MLX **
+
+typedef struct	s_data {
+	void	*img;
+	char	*addr; //añadir resolucion
+	int		bits; //bits or pixel
+	int		line_length;
+	int		endian; //el orden de los bites
+}				t_data;
+
+//** STRUCTS MAP CHECKER **
 typedef struct s_error
 {
 	char	wall;
@@ -150,6 +161,9 @@ char		*ft_strdup_custom(const char *s, size_t n);
 char		**ft_free_str(char **aux);
 int			ft_countc(char const *s, char c);
 char		**ft_split(char const *s, char c);
+
+//** WINDOW **
+void		ft_window();
 
 //** GAME **
 

@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game.c                                        :+:      :+:    :+:   */
+/*   ft_window.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nicgonza <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 18:53:30 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/30 16:01:08 by nicgonza         ###   ########.fr       */
+/*   Created: 2024/01/30 16:01:21 by nicgonza          #+#    #+#             */
+/*   Updated: 2024/01/30 17:44:08 by nicgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "so_long.h"
 
-void	ft_init_game(char **map, t_design *design)
+void	ft_window()
 {
-	char		**aux;
-	t_design	*auxx;
+	void	*mlx;
+	void	*mlx_win;
 
-	aux = map;
-	auxx = design;
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
+	mlx_loop(mlx);
 }
