@@ -6,7 +6,11 @@
 #    By: davgalle <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/06 12:27:32 by davgalle          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2024/01/31 12:39:56 by davgalle         ###   ########.fr        #
+=======
+#    Updated: 2024/01/30 17:18:09 by nicgonza         ###   ########.fr        #
+>>>>>>> 301187d3ee6044b2bb1916d4c5d4b54977b26282
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,8 +50,7 @@ OBJTS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJTS)
-	$(CC) $(FLAGS)  -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(OBJTS)
-
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJTS) $(LINKS)
 clean:
 	$(RM) $(OBJTS)
 
