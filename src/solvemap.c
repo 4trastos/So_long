@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:49:00 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/29 18:45:14 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/31 14:05:29 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,7 @@ bool	ft_solvemap(char **map, t_design *design)
 	move = ft_new_move();
 	while (ft_canmove(map, design, move) && (design->exit != 0
 			|| design->collect != 0))
-	{
 		to_walk(map, design, radar);
-		printf("Después de mover: \n");
-		print_map(map);
-		printf("Salida: %i Colleccionables: %i\n", design->exit, design->collect);
-	}
 	free(move);
 	free(radar);
 	if (design->collect == 0 && design->exit == 0)

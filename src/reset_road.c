@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 20:43:19 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/29 18:40:35 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/31 13:59:55 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,6 @@ void	reset_road(char **map)
 		}
 		y++;
 	}
-	printf("Mapa resteado vvvv: \n");
-	print_map(map);
-	printf("Mapa resteado ^^^^: \n");
 }
 
 void	ft_deadend(char **map, t_design *design, t_move *move)
@@ -49,14 +46,10 @@ void	ft_deadend(char **map, t_design *design, t_move *move)
 		i++;
 	if (i == 3)
 	{
-		printf("Callejón sin salida: \n");
-		print_map(map);
 		map[design->yp][design->xp] = '1';
 		design->xp -= !move->right;
 		design->xp += !move->left;
 		design->yp -= !move->up;
 		design->yp += !move->down;
-		printf("Callejón sin salida cambiando: \n");
-		print_map(map);
 	}
 }

@@ -6,13 +6,14 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 12:37:32 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/29 18:50:12 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/31 16:17:23 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+# include "mlx.h"
 # include <string.h>
 # include <stdio.h>
 # include <unistd.h>
@@ -20,7 +21,6 @@
 # include <stdbool.h>
 # include <limits.h>
 # include <fcntl.h>
-# include <mlx.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 7
@@ -29,6 +29,21 @@
 #  define UP - 1
 #  define DOWN + 1
 # endif
+
+//** STRUCT MLX **
+
+typedef struct	s_data
+{
+	void    *mlx;
+    void    *win;
+	void	*img;
+	char	*addr; //añadir resolucion
+	int		bits_per_pixel; //bits or pixel
+	int		line_length;
+	int		endian; //el orden de los bites
+}				t_data;
+
+//** STRUCTS MAP CHECKER **
 
 typedef struct s_error
 {
@@ -64,7 +79,6 @@ typedef struct s_move
 	bool	left;
 	bool	up;
 	bool	down;
-
 }				t_move;
 
 typedef struct s_radar
@@ -98,6 +112,7 @@ bool		ft_multiplelines(char **map, t_design *design);
 bool		ft_solvemap(char **map, t_design *design);
 
 //*** check cursor ***
+
 int			ft_up(char **map, t_design *design);
 int			ft_down(char **map, t_design *design);
 int			ft_left(char **map, t_design *design);
@@ -151,8 +166,15 @@ char		**ft_free_str(char **aux);
 int			ft_countc(char const *s, char c);
 char		**ft_split(char const *s, char c);
 
+//** WINDOW **
+
+void		ft_window(void);
+void		*mlx_init();
+void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
+
 //** GAME **
 
 void		ft_init_game(char **map, t_design *design);
 void		print_map(char **map);
+int			main(int argc, char **argv);
 #endif
