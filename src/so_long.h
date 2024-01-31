@@ -6,11 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 12:37:32 by davgalle          #+#    #+#             */
-<<<<<<< HEAD
 /*   Updated: 2024/01/31 16:17:23 by davgalle         ###   ########.fr       */
-=======
-/*   Updated: 2024/01/30 17:56:56 by nicgonza         ###   ########.fr       */
->>>>>>> 301187d3ee6044b2bb1916d4c5d4b54977b26282
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +32,6 @@
 
 //** STRUCT MLX **
 
-<<<<<<< HEAD
 typedef struct	s_data
 {
 	void    *mlx;
@@ -44,21 +39,12 @@ typedef struct	s_data
 	void	*img;
 	char	*addr; //añadir resolucion
 	int		bits_per_pixel; //bits or pixel
-=======
-typedef struct	s_data {
-	void	*img;
-	char	*addr; //añadir resolucion
-	int		bits; //bits or pixel
->>>>>>> 301187d3ee6044b2bb1916d4c5d4b54977b26282
 	int		line_length;
 	int		endian; //el orden de los bites
 }				t_data;
 
 //** STRUCTS MAP CHECKER **
-<<<<<<< HEAD
 
-=======
->>>>>>> 301187d3ee6044b2bb1916d4c5d4b54977b26282
 typedef struct s_error
 {
 	char	wall;
@@ -181,14 +167,10 @@ int			ft_countc(char const *s, char c);
 char		**ft_split(char const *s, char c);
 
 //** WINDOW **
-<<<<<<< HEAD
 
 void		ft_window(void);
 void		*mlx_init();
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
-=======
-void		ft_window();
->>>>>>> 301187d3ee6044b2bb1916d4c5d4b54977b26282
 
 //** GAME **
 
