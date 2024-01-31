@@ -6,11 +6,12 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 12:35:36 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/31 14:00:47 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/31 20:28:18 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include "../incl/game.h"
 
 void	print_map(char **map)
 {
@@ -59,8 +60,8 @@ int	main(int argc, char **argv)
 		ft_error_msg("You have to upload a file to play!", NULL);
 	map = ft_check_arg(argc, argv, design, map);
 	free(design);
-	ft_window();
-	ft_free_map(map);
-//	ft_init_game(map, design);
+	ft_window(map);
+//	ft_free_map(map);
+	ft_init_game(map, design);
 	return (0);
 }

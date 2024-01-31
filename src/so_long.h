@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 12:37:32 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/31 16:17:23 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/31 17:26:49 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,6 @@
 #  define UP - 1
 #  define DOWN + 1
 # endif
-
-//** STRUCT MLX **
-
-typedef struct	s_data
-{
-	void    *mlx;
-    void    *win;
-	void	*img;
-	char	*addr; //añadir resolucion
-	int		bits_per_pixel; //bits or pixel
-	int		line_length;
-	int		endian; //el orden de los bites
-}				t_data;
 
 //** STRUCTS MAP CHECKER **
 
@@ -88,12 +75,6 @@ typedef struct s_radar
 	int		up;
 	int		down;
 }				t_radar;
-
-typedef struct s_game
-{
-	int	widht;
-	int	right;
-}				t_game;
 
 //*** check map ***
 
@@ -166,15 +147,4 @@ char		**ft_free_str(char **aux);
 int			ft_countc(char const *s, char c);
 char		**ft_split(char const *s, char c);
 
-//** WINDOW **
-
-void		ft_window(void);
-void		*mlx_init();
-void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
-
-//** GAME **
-
-void		ft_init_game(char **map, t_design *design);
-void		print_map(char **map);
-int			main(int argc, char **argv);
 #endif
