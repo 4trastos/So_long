@@ -6,7 +6,7 @@
 #    By: davgalle <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/06 12:27:32 by davgalle          #+#    #+#              #
-#    Updated: 2024/01/31 12:39:56 by davgalle         ###   ########.fr        #
+#    Updated: 2024/02/01 19:43:24 by davgalle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,8 @@ SRCS = src/main.c \
 	   src/check_movements.c \
 	   src/reset_road.c \
 	   src/ft_radar.c \
-	   src/ft_window.c
+	   src/ft_window.c \
+	   src/sprites.c
 
 OBJTS = $(SRCS:.c=.o)
 
