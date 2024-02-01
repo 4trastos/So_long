@@ -6,79 +6,37 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 15:28:47 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/29 18:38:58 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/01 18:33:16 by nicgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-size_t	ft_playlines(char **map)
+static bool	ft_ifpow_aux(char **map, t_design *design, size_t x, size_t y)
 {
-	size_t	y;
-	size_t	x;
-
-	y = 1;
-	while (map[y] != NULL)
+	if (map[y][x] == 'P')
 	{
-		x = 1;
-		while (map[y][x + 1] != '\0')
-			x++;
-		y++;
+		if (map[y][x + 1] == '1' && map[y][x - 1] == '1'
+				&& map[y + 1][x] == '1' && map[y - 1][x] == '1')
+			return (false);
+		design->yp = y;
+		design->xp = x;
 	}
-	return (y - 2);
-}
-
-size_t	ft_countboxes(char **map)
-{
-	size_t	y;
-	size_t	x;
-
-	y = 1;
-	while (y == 1)
+	if (map[y][x] == 'E')
 	{
-		x = 1;
-		while (map[y][x + 1] != '\0')
-			x++;
-		y--;
+		if (map[y][x + 1] == '1' && map[y][x - 1] == '1'
+				&& map[y + 1][x] == '1' && map[y - 1][x] == '1')
+			return (false);
+		design->ye = y;
+		design->xe = x;
 	}
-	return (x - 1);
-}
-
-bool	ft_singleline(char **map, size_t boxes)
-{
-	size_t	y;
-	size_t	x;
-	int		e;
-	int		c;
-
-	e = 0;
-	c = 0;
-	y = 1;
-	while (map[y + 1] != NULL)
+	if (map[y][x] == 'C')
 	{
-		x = 1;
-		while (map[y][x + 1] != '\0')
-		{
-			if (map[y][x] == 'E')
-				e = 1;
-			if (map[y][x] == 'C')
-				c = 1;
-			if (map[y][x] == '0' || map[y][x] == 'E'
-				|| map[y][x] == 'C' || map[y][x] == 'P')
-			{
-				if (map[y][x + 1] == '1' && map[y][x - 1] == '1'
-						&& map[y + 1][x] == '1' && map[y - 1][x] == '1'
-						&& (c == 0 || e == 0))
-					return (false);
-			}
-			if (map[y][x] == '1' && x != boxes)
-			{
-				if (map[y][x] == '1' && map[y][x + 1] != '1')
-					return (false);
-			}
-			x++;
-		}
-		y++;
+		if (map[y][x + 1] == '1' && map[y][x - 1] == '1'
+				&& map[y + 1][x] == '1' && map[y - 1][x] == '1')
+			return (false);
+		design->yc = y;
+		design->xc = x;
 	}
 	return (true);
 }
@@ -103,33 +61,10 @@ bool	ft_ifpow(char **map, t_design *design)
 		x = 1;
 		while (map[y][x] != '\0')
 		{
-			if (map[y][x] == 'P')
-			{
-				if (map[y][x + 1] == '1' && map[y][x - 1] == '1'
-						&& map[y + 1][x] == '1' && map[y - 1][x] == '1')
-					return (false);
-				design->yp = y;
-				design->xp = x;
+			if (!ft_ifpow_aux(map, design, x, y))
+				return (false);
+			else
 				x++;
-			}
-			if (map[y][x] == 'E')
-			{
-				if (map[y][x + 1] == '1' && map[y][x - 1] == '1'
-						&& map[y + 1][x] == '1' && map[y - 1][x] == '1')
-					return (false);
-				design->ye = y;
-				design->xe = x;
-				x++;
-			}
-			if (map[y][x] == 'C')
-			{
-				if (map[y][x + 1] == '1' && map[y][x - 1] == '1'
-						&& map[y + 1][x] == '1' && map[y - 1][x] == '1')
-					return (false);
-				design->yc = y;
-				design->xc = x;
-			}
-			x++;
 		}
 		y++;
 	}

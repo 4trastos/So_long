@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 18:13:40 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/29 18:04:02 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/01 18:05:25 by nicgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,17 @@ bool	ft_canmove(char **map, t_design *design, t_move *move)
 		return (true);
 }
 
-void	to_walk(char **map, t_design *design, t_radar *radar)
+static void	t_radar_declaration(char **map, t_design *design, t_radar *radar)
 {
 	radar->up = (ft_up(map, design));
 	radar->down = (ft_down(map, design));
 	radar->right = (ft_right(map, design));
 	radar->left = (ft_left(map, design));
+}
+
+void	to_walk(char **map, t_design *design, t_radar *radar)
+{
+	t_radar_declaration(map, design, radar);
 	if (radar->up <= radar->down && radar->up <= radar->right
 		&& radar->up <= radar->left)
 	{

@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:52:43 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/01 16:14:45 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/01 18:23:19 by nicgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,21 +84,14 @@ bool	ft_check_border(char **map, t_design *design)
 		}
 		y++;
 	}
-	design->columns = x;
 	design->rows = y;
+	design->collums = x;
 	return (true);
 }
 
 bool	ft_feasible_map(char **map, t_design *design)
 {
-	size_t	play_lines;
-	size_t	boxes;
-
-	boxes = ft_countboxes(map);
-	play_lines = ft_playlines(map);
-	if (play_lines == 1 && ft_singleline(map, boxes))
-		return (true);
-	else if (ft_multiplelines(map, design))
+	if (ft_multiplelines(map, design))
 		return (true);
 	return (false);
 }

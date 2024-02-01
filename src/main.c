@@ -6,12 +6,11 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 12:35:36 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/01 16:13:25 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/01 18:07:38 by nicgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "../incl/game.h"
 
 void	print_map(char **map)
 {
@@ -49,19 +48,18 @@ char	**ft_check_arg(int argc, char **argv, t_design *design, char **map)
 }
 
 int	main(int argc, char **argv)
-{	
-	atexit(ft_leaks);
+{
 	char		**map;
 	t_design	*design;
 
+	atexit(ft_leaks);
 	map = NULL;
 	design = ft_new_design();
 	if (argc == 1)
 		ft_error_msg("You have to upload a file to play!", NULL);
 	map = ft_check_arg(argc, argv, design, map);
-	free(design);
 	ft_window(map, design);
 //	ft_init_game(map, design);
-//	ft_free_map(map);
+	free(design);
 	return (0);
 }
