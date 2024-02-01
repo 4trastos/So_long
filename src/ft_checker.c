@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:52:43 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/29 18:17:23 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/01 16:14:45 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	**ft_check_map(int fd, t_design *design, char **map)
 	str[0] = '\0';
 	str = ft_read_file(fd, error, str, design);
 	map = ft_split(str, '\n');
-	if (!ft_check_border(map))
+	if (!ft_check_border(map, design))
 		ft_freemap("The map must be closed by walls", map);
 	copy = ft_matrixdup(map);
 	if (!ft_feasible_map(copy, design))
@@ -62,7 +62,7 @@ bool	ft_check_dimension(char *line, t_error *error, size_t file_size)
 	return (true);
 }
 
-bool	ft_check_border(char **map)
+bool	ft_check_border(char **map, t_design *design)
 {
 	int	x;
 	int	y;
@@ -84,6 +84,8 @@ bool	ft_check_border(char **map)
 		}
 		y++;
 	}
+	design->columns = x;
+	design->rows = y;
 	return (true);
 }
 

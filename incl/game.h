@@ -6,12 +6,14 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:51:47 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/31 20:25:18 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/01 16:03:00 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GAME_H
 # define GAME_H
+
+# define SIZE 64
 
 void	window(void);
 
@@ -36,6 +38,7 @@ typedef struct	s_game
 {
 	int			width;
 	int			height;
+	int			collect;
 	void		*mlx;
 	void		*new_w;
 	t_design	*design;
@@ -45,7 +48,7 @@ typedef struct	s_game
 
 //** WINDOW **
 
-void		ft_window(char **map);
+void		ft_window(char **map, t_design *design);
 void		*mlx_init();
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
@@ -54,29 +57,6 @@ void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void		ft_init_game(char **map, t_design *design);
 void		print_map(char **map);
 int			main(int argc, char **argv);
+void		ft_game(t_game *game, char **map, t_design *design);
 
-/*
-typedef struct s_game
-{
-	int			width;
-	int			height;
-	void		*id;
-	void		*w_id;
-	t_design	*lay;
-	t_design	lay_bak;
-	t_sprite	sprites;
-	t_player	*pl;
-	t_player	*gh;
-	int			next_dir;
-	char		**map;
-	char		**map_bak;
-	int			n_collect_bak;
-	int			pac_dying;
-	int			panic_mode;
-	int			n_frames;
-	int			n_moves;
-	int			redraw;
-	int			g_rate;
-}				t_game;
-*/
 #endif

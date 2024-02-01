@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 12:37:32 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/31 17:26:49 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/01 15:58:28 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ typedef struct s_design
 	int		player;
 	int		enemys;
 	int		collect;
+	int		columns;
+	int		rows;
 	size_t	yp;
 	size_t	xp;
 	size_t	yc;
@@ -85,7 +87,7 @@ bool		is_valid_char(char c, t_error *error);
 char		*ft_read_file(int fd, t_error *error, char *str, t_design *design);
 bool		ft_check_dimension(char *line, t_error *error, size_t file_size);
 bool		ft_feasible_map(char **map, t_design *design);
-bool		ft_check_border(char **map);
+bool		ft_check_border(char **map, t_design *design);
 bool		ft_middle_map(char *str, t_design *design);
 bool		ft_restmap(char *str, t_design *design);
 bool		ft_singleline(char **map, size_t boxes);

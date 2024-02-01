@@ -6,14 +6,14 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:34:20 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/31 20:23:43 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/01 16:18:39 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "../incl/game.h"
 
-void	ft_window(char **map)
+void	ft_window(char **map, t_design *design)
 {
 	void	*mlx; //se llama en la struc game
 	void	*mlx_win;
@@ -22,7 +22,9 @@ void	ft_window(char **map)
 	int		x;
 	int		i;
 	int		j;
+	t_design	*aux;
 
+	aux = design;
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, 1920, 1080, "Beniat Txuri Urdina!!");
 	img.grass = mlx_new_image(mlx, 1920, 1080);
@@ -44,17 +46,20 @@ void	ft_window(char **map)
 		}
 		j = j + 64;
 	}
-	img.img = mlx_new_image(mlx, 17 * 64, 8 * 64);
+	img.img = mlx_new_image(mlx, 10 * 64, 18 * 64);
+//	img.img = mlx_new_image(mlx, design->columns * SIZE, design->rows * SIZE);
 	img.wall = mlx_xpm_file_to_image(mlx, "textures/xpm/cono.xpm", &img.bits_per_pixel, &img.line_length);
 	img.collect = mlx_xpm_file_to_image(mlx, "textures/xpm/escudo.xpm", &img.bits_per_pixel, &img.line_length);
 	img.player = mlx_xpm_file_to_image(mlx, "textures/xpm/beniat.xpm", &img.bits_per_pixel, &img.line_length);
 	j = 0;
 	y = 0;
-	while (j <= 1080 && y != 8)
+//	while (j <= design->columns * SIZE && y != 10)
+	while (j <= 1080 * 64 && y != 10)
 	{
 		x = 0;
 		i = 0;
-		while (i <= 1920 && x != 17)
+//		while (i <= design->rows * SIZE && x != 18)
+		while (i <= 1920 * 64 && x != 18)
 		{
 			if	(map[y][x] == '1')
 				mlx_put_image_to_window(mlx, mlx_win, img.wall, i, j);
