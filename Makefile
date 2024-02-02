@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: davgalle <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/06 12:27:32 by davgalle          #+#    #+#              #
-#    Updated: 2024/02/01 19:43:24 by davgalle         ###   ########.fr        #
+#    Updated: 2024/02/02 20:35:31 by davgalle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,13 @@ SRCS = src/main.c \
 	   src/reset_road.c \
 	   src/ft_radar.c \
 	   src/ft_window.c \
-	   src/sprites.c
+	   src/sprites.c \
+	   src/ft_player.c \
+	   src/ft_enemy.c \
+	   src/ft_floor.c \
+	   src/ft_collect.c \
+	   src/ft_directons.c \
+	   src/ft_animation.c
 
 OBJTS = $(SRCS:.c=.o)
 

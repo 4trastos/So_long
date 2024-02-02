@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_window.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:34:20 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/01 19:48:31 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/02 23:17:09 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "../incl/game.h"
 
+/* 
 void	ft_window(char **map, t_design *design)
 {
 	void	*mlx; //se llama en la struc game
@@ -74,8 +75,8 @@ void	ft_window(char **map, t_design *design)
 		j = j + 64;
 		y++;
     }
-	mlx_loop(mlx);
-}
+	mlx_loop(mlx); 
+}*/
 /*
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {

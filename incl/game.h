@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:51:47 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/01 20:24:43 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/02 23:13:14 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,44 +19,62 @@ void	window(void);
 
 //** STRUCT MLX **
 
-typedef struct	s_data
+typedef struct	s_list  //NO TENGO NI IDEA DE SI ESTÁ BIEN
 {
-	void	*mlx;
-	void	*img;
-	void	*grass;
-	void	*imgtwo;
-	void	*wall;
-	void	*collect;
-	void	*player;
-	void	*exit;
-	char	*addr;            //añadir resolucion
-	int		bits_per_pixel;   //bits or pixel
-	int		line_length;
-	int		endian;           //el orden de los bites
-}				t_data;
+	void			*content;
+	struct s_list	*next;
+}				t_list;
 
+typedef struct s_pl_sprite
+{
+	t_list			*up;
+	t_list			*up_back;
+	t_list			*down;
+	t_list			*down_back;
+	t_list			*left;
+	t_list			*left_back;
+	t_list			*right;
+	t_list			*right_back;
+}				t_pl_sprite;
 
 typedef struct	s_sprite
 {
-	void		*wall;
-	void		*grass;
-	void		*exit;
-	void		*player;
-	void		*collect;
-	void		*enemys;
-}				t_sprite;
+	void			*wall;
+	void			*grass;
+	void			*grasstwo;
+	void			*exit;
+	void			*player;
+	void			*collect;
+	void			*enemys;
+}			t_sprite;
+
+typedef struct s_player
+{
+	t_design		pos;  //COGE LA POSICIÓN DE LA STRUCT T_DESIGN
+	int				dir;
+	int				moving;
+	t_pl_sprite		sprites;
+	struct s_player	*next;
+
+}			t_player;
 
 typedef struct	s_game
 {
-	int			width;
-	int			height;
-	int			collect;
-	void		*mlx;
-	void		*new_w;
-	t_design	*design;
-	t_sprite	sprites;
-	char		**map;
-	char		**floor;
+	int				width;
+	int				height;
+	int				collect;
+	void			*mlx;
+	void			*new_w;
+	void			*img;
+	t_design		*design;
+	t_sprite		sprites;
+	t_player		*player;
+	t_player		*enemy;
+	char			**map;
+	char			**floor;
+	int				n_frames;
+	int				g_rate;
+	int				panic_mode;
 }				t_game;
 
 
@@ -64,9 +82,10 @@ typedef struct	s_game
 
 void		ft_window(char **map, t_design *design);
 void		*mlx_init();
-void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 t_sprite	ft_load_sprites(t_game *game);
-
+void		ft_floor(t_game *game, t_design *design);
+void		ft_walls(char **map, t_game *game);
+void		ft_collects(char **map, t_game *game);
 
 //** GAME **
 
@@ -74,11 +93,32 @@ void		ft_init_game(char **map, t_design *design);
 void		print_map(char **map);
 int			main(int argc, char **argv);
 void		ft_game(t_game *game, char **map, t_design *design);
-void		ft_playerlist(char **map, t_game *game);
-void		ft_enemy_mov(t_game *game);
+void		ft_player(char **map, t_game *game);
+void		ft_load_enemy(char **map, t_game *game);
 
 //** CLOSE GAME **
 
 int			free_sprites(t_game *game);
+
+
+//** PLAYERS / ENEMIES **
+
+void		load_player(t_game *game);
+void		ft_put_player(t_game *game);
+
+
+//** MOVEMENTS **
+
+t_list		*ft_north(t_game *game, char *path, int i);
+t_list		*ft_south(t_game *game, char *path, int i);
+t_list		*ft_west(t_game *game, char *path, int i);
+t_list		*ft_east(t_game *game, char *path, int i);
+void		ft_stack_node(t_list **a, t_list *new);
+t_list		*ft_create_node(void *content);
+void		ft_anim_north(t_game *game, t_player *play);
+void		ft_anim_north(t_game *game, t_player *play);
+void		ft_anim_south(t_game *game, t_player *play);
+void		ft_anim_west(t_game *game, t_player *play);
+void		ft_anim_east(t_game *game, t_player *play);
 
 #endif
