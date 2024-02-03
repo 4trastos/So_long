@@ -6,7 +6,7 @@
 #    By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/06 12:27:32 by davgalle          #+#    #+#              #
-#    Updated: 2024/02/02 20:35:31 by davgalle         ###   ########.fr        #
+#    Updated: 2024/02/03 10:36:58 by davgalle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,8 +45,9 @@ SRCS = src/main.c \
 	   src/ft_enemy.c \
 	   src/ft_floor.c \
 	   src/ft_collect.c \
-	   src/ft_directons.c \
-	   src/ft_animation.c
+	   src/ft_directions.c \
+	   src/ft_animation.c \
+	   src/create_nodes.c
 
 OBJTS = $(SRCS:.c=.o)
 

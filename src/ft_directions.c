@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_directions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 20:00:52 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/02 23:10:09 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/03 15:03:58 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@ t_list	*ft_north(t_game *game, char *road, int i)
 	if (road)
 	{
 		str = ft_strjoin(road, "xmp/ghost/ghost01.xpm");
-		ft_stack_nodet(&animation, ft_create_node(mlx_xpm_file_to_image(game->mlx, str, &i, &i))); //MIRAR EN GAME.H 
+		ft_stack_node(&animation, ft_create_node(mlx_xpm_file_to_image(game->mlx, str, &i, &i))); 
 		free(str);
 		str = ft_strjoin(road, "xmp/ghost/ghost02.xpm");
-		ft_stack_node(&animation, ft_create_node(mlx_xpm_file_to_image(game->mlx, str, &i, &i))); //MIRAR EN GAME.H
+		ft_stack_node(&animation, ft_create_node(mlx_xpm_file_to_image(game->mlx, str, &i, &i)));
 		free(str);
 		str = ft_strjoin(road, "xmp/ghost/ghost03.xpm");
-		ft_stack_node(&animation, ft_create_node(mlx_xpm_file_to_image(game->mlx, str, &i, &i))); //MIRAR EN GAME.H
+		ft_stack_node(&animation, ft_create_node(mlx_xpm_file_to_image(game->mlx, str, &i, &i)));
 		free(str);
 		str = ft_strjoin(road, "xmp/ghost/ghost04.xpm");
-		ft_stack_node(&animation, ft_create_node(mlx_xpm_file_to_image(game->mlx, str, &i, &i))); //MIRAR EN GAME.H
+		ft_stack_node(&animation, ft_create_node(mlx_xpm_file_to_image(game->mlx, str, &i, &i)));
 		free(str);
 		return (animation);
 	}
@@ -132,11 +132,11 @@ t_list	*ft_east(t_game *game, char *road, int i)
 void	ft_put_stopped(t_game *game, t_player *beniat)
 {
 	if (beniat->dir == N)
-		mlx_put_image_to_window(game->mlx, game->new_w, beniat->sprites.up_back->content, beniat->pos.xp * SIZE, beniat->pos.yp * SIZE);
+		mlx_put_image_to_window(game->mlx, game->new_w, beniat->sprites.up_back->content, beniat->posx * SIZE, beniat->posy * SIZE);
 	if (beniat->dir == S)
-		mlx_put_image_to_window(game->mlx, game->new_w, beniat->sprites.down_back->content, beniat->pos.xp * SIZE, beniat->pos.yp * SIZE);
+		mlx_put_image_to_window(game->mlx, game->new_w, beniat->sprites.down_back->content, beniat->posx * SIZE, beniat->posy * SIZE);
 	if (beniat->dir == E)
-		mlx_put_image_to_window(game->mlx, game->new_w, beniat->sprites.right_back->content, beniat->pos.xp * SIZE, beniat->pos.yp * SIZE);
+		mlx_put_image_to_window(game->mlx, game->new_w, beniat->sprites.right_back->content, beniat->posx * SIZE, beniat->posy * SIZE);
 	if (beniat->dir == W)
-		mlx_put_image_to_window(game->mlx, game->new_w, beniat->sprites.left_back->content, beniat->pos.xp * SIZE, beniat->pos.yp * SIZE);
+		mlx_put_image_to_window(game->mlx, game->new_w, beniat->sprites.left_back->content, beniat->posx * SIZE, beniat->posy * SIZE);
 }

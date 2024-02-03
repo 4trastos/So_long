@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:52:43 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/01 16:14:45 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/03 14:13:55 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	**ft_check_map(int fd, t_design *design, char **map)
 	map = ft_split(str, '\n');
 	if (!ft_check_border(map, design))
 		ft_freemap("The map must be closed by walls", map);
-	copy = ft_matrixdup(map);
+	copy = ft_matrixdup(map, design);
 	if (!ft_feasible_map(copy, design))
 		ft_freedoublemap("The map is not feasible", map, copy);
 	free(str);
@@ -84,21 +84,14 @@ bool	ft_check_border(char **map, t_design *design)
 		}
 		y++;
 	}
-	design->columns = x;
 	design->rows = y;
+	design->columns = x;
 	return (true);
 }
 
 bool	ft_feasible_map(char **map, t_design *design)
 {
-	size_t	play_lines;
-	size_t	boxes;
-
-	boxes = ft_countboxes(map);
-	play_lines = ft_playlines(map);
-	if (play_lines == 1 && ft_singleline(map, boxes))
-		return (true);
-	else if (ft_multiplelines(map, design))
+	if (ft_multiplelines(map, design))
 		return (true);
 	return (false);
 }

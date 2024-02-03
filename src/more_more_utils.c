@@ -6,24 +6,17 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 17:33:24 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/29 18:35:11 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/03 14:15:19 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	**ft_matrixdup(char **map)
+static char	**ft_matrix_dup_aux(char **map, char **copy, size_t x)
 {
-	char	**copy;
 	size_t	y;
-	size_t	x;
 	size_t	i;
 
-	y = ft_playlines(map) + 2;
-	x = ft_countboxes(map) + 3;
-	copy = (char **)malloc(x * y);
-	if (!copy)
-		return (NULL);
 	y = 0;
 	while (map[y] != NULL)
 	{
@@ -45,5 +38,20 @@ char	**ft_matrixdup(char **map)
 		y++;
 	}
 	copy[y] = NULL;
+	return (copy);
+}
+
+char	**ft_matrixdup(char **map, t_design *design)
+{
+	char	**copy;
+	size_t	y;
+	size_t	x;
+
+	y = design->rows;
+	x = design->columns;
+	copy = (char **)malloc(x * y);
+	if (!copy)
+		return (NULL);
+	copy = ft_matrix_dup_aux(map, copy, x);
 	return (copy);
 }

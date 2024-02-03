@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   create_nodes.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 21:24:28 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/02 22:21:45 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/03 10:35:12 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "../incl/game.h"
 
-void	ft_stack_node(t_list **a, t_list *new)
+void	ft_stack_node(t_list **animation, t_list *new)
 {
 	t_list	*aux;
 
-	aux = *a;
-	if (*a == NULL)
+	aux = *animation;
+	if (*animation == NULL)
 	{
-		*a = new;
+		*animation = new;
 		return ;
 	}
 	while (aux->next != NULL)
@@ -38,4 +38,5 @@ t_list	*ft_create_node(void *content)
 		return (NULL);
 	new->content = content;
 	new->next = NULL;
+	return (new);
 }
