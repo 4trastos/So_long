@@ -6,7 +6,11 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 17:33:24 by davgalle          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/02/03 14:15:19 by davgalle         ###   ########.fr       */
+=======
+/*   Updated: 2024/02/01 18:16:13 by nicgonza         ###   ########.fr       */
+>>>>>>> 57c2c9a7ee7df2cc13b8b66fd7877d91d15a80b6
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +45,23 @@ static char	**ft_matrix_dup_aux(char **map, char **copy, size_t x)
 	return (copy);
 }
 
+<<<<<<< HEAD
 char	**ft_matrixdup(char **map, t_design *design)
+=======
+char	**ft_matrixdup(char **map)
+>>>>>>> 57c2c9a7ee7df2cc13b8b66fd7877d91d15a80b6
 {
 	char	**copy;
 	size_t	y;
 	size_t	x;
 
+<<<<<<< HEAD
 	y = design->rows;
 	x = design->columns;
+=======
+	y = ft_playlines(map) + 2;
+	x = ft_countboxes(map) + 3;
+>>>>>>> 57c2c9a7ee7df2cc13b8b66fd7877d91d15a80b6
 	copy = (char **)malloc(x * y);
 	if (!copy)
 		return (NULL);

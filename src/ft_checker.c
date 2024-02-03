@@ -6,7 +6,11 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:52:43 by davgalle          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/02/03 14:13:55 by davgalle         ###   ########.fr       */
+=======
+/*   Updated: 2024/02/01 18:23:19 by nicgonza         ###   ########.fr       */
+>>>>>>> 57c2c9a7ee7df2cc13b8b66fd7877d91d15a80b6
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +89,11 @@ bool	ft_check_border(char **map, t_design *design)
 		y++;
 	}
 	design->rows = y;
+<<<<<<< HEAD
 	design->columns = x;
+=======
+	design->collums = x;
+>>>>>>> 57c2c9a7ee7df2cc13b8b66fd7877d91d15a80b6
 	return (true);
 }
 
