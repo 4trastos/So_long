@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 12:35:36 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/03 15:34:49 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/03 20:57:31 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	main(int argc, char **argv)
 		ft_error_msg("You have to upload a file to play!", NULL);
 	map = ft_check_arg(argc, argv, design, map);
 	ft_init_game(map, design);
-//	free(design);
-//	ft_free_map(map);
+	free(design);
+	ft_free_map(map);
 	return (0);
 }

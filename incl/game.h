@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:51:47 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/03 18:42:45 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/03 22:31:47 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ typedef struct	s_game
 	int				collect;
 	int				moves;
 	int				errors;
+	int				npccontrol;
+	int				width_l;
 	size_t			posx;
 	size_t			posy;
 	size_t			pwx;
@@ -85,6 +87,15 @@ typedef struct	s_game
 	void			*mlx;
 	void			*new_w;
 	void			*img;
+	void			*npcstart;
+	void			*npcback;
+	void			*npcbmv;
+	void			*npcleft;
+	void			*npcright;
+	void			*npclmv;
+	void			*npcrmv;
+	void			*npc;
+	void			*npcmv;
 	t_design		*design;
 	t_sprite		sprites;
 	t_player		*player;
@@ -115,6 +126,7 @@ int			main(int argc, char **argv);
 void		ft_game(t_game *game, char **map, t_design *design);
 void		ft_player(char **map, t_game *game, t_design *design);
 void		ft_load_enemy(char **map, t_game *game);
+bool		check_exit(t_game *game, char letter);
 
 //** CLOSE GAME **
 
@@ -141,6 +153,10 @@ void		ft_anim_south(t_game *game, t_player *play);
 void		ft_anim_west(t_game *game, t_player *play);
 void		ft_anim_east(t_game *game, t_player *play);
 void		ft_put_stopped(t_game *game, t_player *beniat);
+void		move_w(t_game *game);
+void		move_s(t_game *game);
+void		move_a(t_game *game);
+void		move_d(t_game *game);
 
 //** BUTTONS **
 

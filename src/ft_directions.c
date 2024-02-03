@@ -6,12 +6,133 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 20:00:52 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/03 15:03:58 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/03 22:44:07 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "../incl/game.h"
+
+void	move_w(t_game *game)
+{
+	int	y;
+	int	x;
+
+	y = 1;
+	while (game->map[y]!= NULL)
+	{
+		x = 0;
+		while (game->map[y][x] != 'P')
+		{
+			if (game->map[y][x + UP] != '1'
+				&& !check_exit(game, game->map[y][x + UP]))
+			{
+				game->moves++;
+				if (game->map[y][x + UP] == 'C')
+				game->collect--;
+				game->map[y][x] = '0';
+				game->map[y][x + UP] = 'P';
+				if (game->npccontrol == 0)
+				{
+					game->npcstart = game->npcback;
+					game->npccontrol = 1;
+				}
+				else
+				{
+					game->npcstart = game->npcbmv;
+					game->npccontrol = 0;
+				}
+			}
+			x++;
+		}
+		y++;
+	}
+//	print_map(map);
+}
+void	move_s(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (game->big_line[i] != 'P')
+		i++;
+	if (game->big_line[i + game->width_l] != '1'
+		&& !check_exit(game, game->big_line[i + game->width_l]))
+	{
+		game->moves++;
+		if (game->big_line[i + game->width_l] == 'C')
+			game->collect--;
+		game->big_line[i] = '0';
+		game->big_line[i + game->width_l] = 'P';
+		if (game->npccontrol == 0)
+		{
+			game->npcstart = game->npc;
+			game->npccontrol = 1;
+		}
+		else
+		{
+			game->npcstart = game->npcmv;
+			game->npccontrol = 0;
+		}
+	}
+//	print_map(map);
+}
+
+void	move_a(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (game->big_line[i] != 'P')
+		i++;
+	if (game->big_line[i - 1] != '1' && !check_exit(game, game->big_line[i - 1]))
+	{
+		game->moves++;
+		if (game->big_line[i - 1] == 'C')
+			game->collect--;
+		game->big_line[i] = '0';
+		game->big_line[i - 1] = 'P';
+		if (game->npccontrol == 0)
+		{
+			game->npcstart = game->npcleft;
+			game->npccontrol = 1;
+		}
+		else
+		{
+			game->npcstart = game->npclmv;
+			game->npccontrol = 0;
+		}
+	}
+//	print_map(map);
+}
+
+void	move_d(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (game->big_line[i] != 'P')
+		i++;
+	if (game->big_line[i + 1] != '1' && !check_exit(game, game->big_line[i + 1]))
+	{
+		game->moves++;
+		if (game->big_line[i + 1] == 'C')
+			game->collect--;
+		game->big_line[i] = '0';
+		game->big_line[i + 1] = 'P';
+		if (game->npccontrol == 0)
+		{
+			game->npcstart = game->npcright;
+			game->npccontrol = 1;
+		}
+		else
+		{
+			game->npcstart = game->npcrmv;
+			game->npccontrol = 0;
+		}
+	}
+//	print_map(map);
+}
 
 t_list	*ft_north(t_game *game, char *road, int i)
 {
