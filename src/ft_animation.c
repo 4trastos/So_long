@@ -6,12 +6,39 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 20:30:55 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/03 15:05:55 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/03 18:17:24 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "../incl/game.h"
+
+int	key_press(int key, t_game *game)
+{
+	char	*moves_p;
+
+	moves_p = NULL;
+	(void)game;
+	if (key == 53)
+	{
+		mlx_destroy_window(game->mlx, game->new_w);
+		ft_free(game);
+	}
+	/* if (key == 13)
+		move_w(game);
+	if (key == 0)
+		move_a(game);
+	if (key == 1)
+		move_s(game);
+	if (key == 2)
+		move_d(game);
+	moves_p = ft_itoa(game->moves);
+	write(1, moves_p, ft_strlen(moves_p));*/
+	if (moves_p)
+		free(moves_p);
+	write(1, "\n", 1);
+	return (0);
+}
 
 void	ft_anim_north(t_game *game, t_player *play)
 {

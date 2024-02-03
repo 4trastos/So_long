@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 15:07:34 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/03 16:18:53 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/03 17:03:54 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,9 @@ void	ft_player(char **map, t_game *game, t_design *design)
 
 	map = NULL;
 	beniat = game->player;
-	beniat->posx = design->xp * SIZE;
-	beniat->posy = design->yp * SIZE;
-	printf("Posicon X: %zu\n", design->xp);
-	printf("Posicon Y: %zu\n", design->yp);
-	mlx_put_image_to_window(game->mlx, game->new_w, game->sprites.player, beniat->posx, beniat->posy);
+	beniat->posx = design->xp;
+	beniat->posy = design->yp;
+	mlx_put_image_to_window(game->mlx, game->new_w, game->sprites.player, SIZE * design->xp, SIZE * design->yp);
 }
 /*
 void	ft_player(char **map, t_game *game)

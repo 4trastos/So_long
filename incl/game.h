@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:51:47 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/03 16:18:19 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/03 18:42:45 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,12 @@ typedef struct	s_game
 	int				width;
 	int				height;
 	int				collect;
+	int				moves;
+	int				errors;
+	size_t			posx;
+	size_t			posy;
+	size_t			pwx;
+	size_t			pwy;
 	void			*mlx;
 	void			*new_w;
 	void			*img;
@@ -85,6 +91,7 @@ typedef struct	s_game
 	t_player		*enemy;
 	char			**map;
 	char			**floor;
+	char			*big_line;
 	int				n_frames;
 	int				g_rate;
 	int				panic_mode;
@@ -97,7 +104,8 @@ void		*mlx_init();
 t_sprite	ft_load_sprites(t_game *game);
 void		ft_floor(t_game *game, t_design *design);
 void		ft_walls(char **map, t_game *game);
-void		ft_collects(char **map, t_game *game);
+void		ft_collects(char **map, t_game *game, t_design *design);
+int			ft_free(t_game *game);
 
 //** GAME **
 
@@ -133,5 +141,9 @@ void		ft_anim_south(t_game *game, t_player *play);
 void		ft_anim_west(t_game *game, t_player *play);
 void		ft_anim_east(t_game *game, t_player *play);
 void		ft_put_stopped(t_game *game, t_player *beniat);
+
+//** BUTTONS **
+
+int		key_press(int key, t_game *game);
 
 #endif

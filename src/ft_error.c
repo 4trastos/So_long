@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 19:31:45 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/29 18:19:29 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/03 18:23:35 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include "../incl/game.h"
 
 void	ft_error_msg(char *msg, char **map)
 {
@@ -77,4 +78,14 @@ void	ft_freedoublemap(char *msg, char **map, char **copy)
 	}
 	free(copy);
 	ft_freemap(msg, map);
+}
+
+int	ft_free(t_game *game)
+{
+	game->errors = 1;
+	if (game->big_line)
+		free(game->big_line);
+	if (game)
+		free(game);
+	exit(0);
 }

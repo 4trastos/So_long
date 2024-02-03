@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 12:37:32 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/03 14:15:35 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/03 18:52:13 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ typedef struct s_design
 	size_t	xc;
 	size_t	ye;
 	size_t	xe;
+	size_t	yw;
+	size_t	xw;
 
 }				t_design;
 
@@ -93,6 +95,8 @@ bool		ft_restmap(char *str, t_design *design);
 bool		ft_singleline(char **map, size_t boxes);
 bool		ft_multiplelines(char **map, t_design *design);
 bool		ft_solvemap(char **map, t_design *design);
+void		load_data(char **map, t_design *desing);
+void		load_enemies(char **map, t_design *design);
 
 //*** check cursor ***
 

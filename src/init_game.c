@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:45:36 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/03 15:01:23 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/03 18:58:52 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ft_init_game(char **map, t_design *design)
 	t_game		game;
 
 	game.design = design;
+	load_data(map, design);
 	game.collect = design->collect;
 	game.floor = ft_matrixdup(map, design);
 	game.mlx = mlx_init();
@@ -35,12 +36,12 @@ void	ft_game(t_game *game, char **map, t_design *design)
 	game->sprites = ft_load_sprites(game);
 	ft_floor(game, design);
 	ft_walls(map, game);
-	ft_collects(map, game);
+	ft_collects(map, game, design);
 	ft_player(map, game, design);
 //	load_player(game);
-	ft_load_enemy(map, game);
+//	ft_load_enemy(map, game);
 //	mlx_loop_hook(game->mlx, ft_update, (void *)game);
 //	mlx_hook(game->mew_w, 17, 0, end_game, (void *)game);
-//	mlx_key_hook(game->new_w, key_hook, (void *)game);
+	mlx_key_hook(game->new_w, key_press, game);
 	mlx_loop(game->mlx);
 }
