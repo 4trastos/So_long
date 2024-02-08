@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+         #
+#    By: usuario <usuario@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/06 12:27:32 by davgalle          #+#    #+#              #
-#    Updated: 2024/02/03 21:11:21 by davgalle         ###   ########.fr        #
+#    Updated: 2024/02/08 18:47:52 by usuario          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,9 +45,7 @@ SRCS = src/main.c \
 	   src/ft_enemy.c \
 	   src/ft_floor.c \
 	   src/ft_collect.c \
-	   src/ft_directions.c \
 	   src/ft_animation.c \
-	   src/create_nodes.c \
 	   src/check_exit.c
 
 OBJTS = $(SRCS:.c=.o)

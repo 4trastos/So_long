@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: usuario <usuario@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:51:47 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/03 22:31:47 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/08 19:01:02 by usuario          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ enum e_direction
 };
 
 //** STRUCT MLX **
-
+/*
 typedef struct	s_list
 {
 	void			*content;
@@ -46,10 +46,22 @@ typedef struct s_pl_sprite
 	t_list			*left_back;
 	t_list			*right;
 	t_list			*right_back;
-}				t_pl_sprite;
+}				t_pl_sprite;*/
 
-typedef struct	s_sprite
+typedef struct	s_game
 {
+	int				width;
+	int				height;
+	int				collect_count;
+	int				moves;
+	int				errors;
+	int				npccontrol;
+	int				width_l;
+	size_t			pwx;
+	size_t			pwy;
+	void			*mlx;
+	void			*new_w;
+	void			*img;
 	void			*wall;
 	void			*grass;
 	void			*grasstwo;
@@ -57,36 +69,6 @@ typedef struct	s_sprite
 	void			*player;
 	void			*collect;
 	void			*enemys;
-}			t_sprite;
-
-typedef struct s_player
-{
-	t_design		*design;
-	size_t			posx;
-	size_t			posy;
-	int				dir;
-	int				moving;
-	t_pl_sprite		sprites;
-	struct s_player	*next;
-
-}			t_player;
-
-typedef struct	s_game
-{
-	int				width;
-	int				height;
-	int				collect;
-	int				moves;
-	int				errors;
-	int				npccontrol;
-	int				width_l;
-	size_t			posx;
-	size_t			posy;
-	size_t			pwx;
-	size_t			pwy;
-	void			*mlx;
-	void			*new_w;
-	void			*img;
 	void			*npcstart;
 	void			*npcback;
 	void			*npcbmv;
@@ -97,9 +79,8 @@ typedef struct	s_game
 	void			*npc;
 	void			*npcmv;
 	t_design		*design;
-	t_sprite		sprites;
-	t_player		*player;
-	t_player		*enemy;
+	size_t			posx;
+	size_t			posy;
 	char			**map;
 	char			**floor;
 	char			*big_line;
@@ -112,7 +93,7 @@ typedef struct	s_game
 
 void		ft_window(char **map, t_design *design);
 void		*mlx_init();
-t_sprite	ft_load_sprites(t_game *game);
+void		ft_load_sprites(t_game *game);
 void		ft_floor(t_game *game, t_design *design);
 void		ft_walls(char **map, t_game *game);
 void		ft_collects(char **map, t_game *game, t_design *design);
@@ -141,18 +122,6 @@ void		ft_put_player(t_game *game);
 
 //** MOVEMENTS **
 
-void		ft_stack_node(t_list **animation, t_list *new);
-t_list		*ft_create_node(void *content);
-t_list		*ft_north(t_game *game, char *road, int i);
-t_list		*ft_south(t_game *game, char *road, int i);
-t_list		*ft_west(t_game *game, char *road, int i);
-t_list		*ft_east(t_game *game, char *road, int i);
-void		ft_anim_north(t_game *game, t_player *play);
-void		ft_anim_north(t_game *game, t_player *play);
-void		ft_anim_south(t_game *game, t_player *play);
-void		ft_anim_west(t_game *game, t_player *play);
-void		ft_anim_east(t_game *game, t_player *play);
-void		ft_put_stopped(t_game *game, t_player *beniat);
 void		move_w(t_game *game);
 void		move_s(t_game *game);
 void		move_a(t_game *game);
