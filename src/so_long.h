@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 12:37:32 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/03 18:52:13 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/09 22:58:17 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 7
 #  define RIGHT -1
-#  define LEFT + 1
-#  define UP - 1
-#  define DOWN + 1
+#  define LEFT +1
+#  define UP -1
+#  define DOWN +1
 # endif
 
 //** STRUCTS MAP CHECKER **
@@ -61,6 +61,7 @@ typedef struct s_design
 	size_t	xe;
 	size_t	yw;
 	size_t	xw;
+	char	*str;
 
 }				t_design;
 

@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 20:00:52 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/03 22:44:07 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/08 15:41:30 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,20 @@ void	move_w(t_game *game)
 	while (game->map[y]!= NULL)
 	{
 		x = 0;
-		while (game->map[y][x] != 'P')
+		while (game->map[y][x] != '\0')
 		{
-			if (game->map[y][x + UP] != '1'
-				&& !check_exit(game, game->map[y][x + UP]))
+			if (game->map[y][x + UP] != '1' || game->map[y][x + UP] != 'W')
 			{
 				game->moves++;
 				if (game->map[y][x + UP] == 'C')
-				game->collect--;
-				game->map[y][x] = '0';
-				game->map[y][x + UP] = 'P';
-				if (game->npccontrol == 0)
+				{
+					game->collect--;
+					game->map[y][x] = '0';
+					game->map[y][x + UP] = 'P';
+				}
+				if (game->map[y][x + UP] == 'E')
+					check_exit(game, game->map[y][x + UP]);
+				/* if (game->npccontrol == 0)
 				{
 					game->npcstart = game->npcback;
 					game->npccontrol = 1;
@@ -41,7 +44,7 @@ void	move_w(t_game *game)
 				{
 					game->npcstart = game->npcbmv;
 					game->npccontrol = 0;
-				}
+				} */
 			}
 			x++;
 		}

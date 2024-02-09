@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_enemy.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: usuario <usuario@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 15:15:05 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/02 18:11:07 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/08 18:55:25 by usuario          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_load_enemy(char **map, t_game *game)
 		while (map[y][x] != '\0')
 		{
 			if (map[y][x] == 'W')
-				mlx_put_image_to_window(game->mlx, game->new_w, game->sprites.enemys, SIZE * x, SIZE * y);
+				mlx_put_image_to_window(game->mlx, game->new_w, game->enemys, SIZE * x, SIZE * y);
 			x++;
 		}
 		y++;
