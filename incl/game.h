@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:51:47 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/09 21:53:17 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/12 21:02:47 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,6 @@ enum e_direction
 };
 
 //** STRUCT MLX **
-/*
-typedef struct	s_list
-{
-	void			*content;
-	struct s_list	*next;
-}				t_list;
-
-typedef struct s_pl_sprite
-{
-	t_list			*up;
-	t_list			*up_back;
-	t_list			*down;
-	t_list			*down_back;
-	t_list			*left;
-	t_list			*left_back;
-	t_list			*right;
-	t_list			*right_back;
-}				t_pl_sprite;*/
 
 typedef struct	s_game
 {
@@ -54,9 +36,7 @@ typedef struct	s_game
 	int				height;
 	int				collect_count;
 	int				moves;
-	int				errors;
-	int				npccontrol;
-	int				width_l;
+	int				postcontrol;
 	t_design		*design;
 	size_t			posx;
 	size_t			posy;
@@ -68,24 +48,21 @@ typedef struct	s_game
 	void			*grasstwo;
 	void			*exit;
 	void			*player;
+	void			*playerA;
+	void			*playerB;
+	void			*playerup;
+	void			*playerupA;
+	void			*playerupB;
+	void			*playerdown;
+	void			*playerdownA;
+	void			*playerdownB;
+	void			*playeright;
+	void			*playerightA;
+	void			*playerightB;
 	void			*collect;
 	void			*enemys;
-	void			*none;
-	void			*npcstart;
-	void			*npcback;
-	void			*npcbmv;
-	void			*npcleft;
-	void			*npcright;
-	void			*npclmv;
-	void			*npcrmv;
-	void			*npc;
-	void			*npcmv;
 	char			**map;
 	char			**floor;
-	char			*big_line;
-	int				n_frames;
-	int				g_rate;
-	int				panic_mode;
 }				t_game;
 
 //** WINDOW **
@@ -107,6 +84,7 @@ void		ft_game(t_game *game, char **map, t_design *design);
 void		ft_player(char **map, t_game *game, t_design *design);
 void		ft_load_enemy(char **map, t_game *game);
 bool		check_exit(t_game *game, char letter);
+char		*ft_itoa(int n);
 
 //** CLOSE GAME **
 
@@ -121,13 +99,19 @@ void		ft_put_player(t_game *game);
 
 //** MOVEMENTS **
 
-void		move_w(t_game *game, t_design *design);
+void		move_w(t_game *game);
 void		move_s(t_game *game);
 void		move_a(t_game *game);
 void		move_d(t_game *game);
+void		ft_moveup(t_game *game);
+void		ft_movedown(t_game *game);
+void		ft_moveright(t_game *game);
+void		ft_moveleft(t_game *game);
 
 //** BUTTONS **
 
-int			key_press(int key, t_game *game, t_design *design);
+int			key_press(int key, t_game *game);
+void		ft_win_game(t_game *game);
+void		ft_putmoves(int c);
 
 #endif

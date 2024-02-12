@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 19:31:45 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/03 18:23:35 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/12 20:03:13 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,4 @@ void	ft_freedoublemap(char *msg, char **map, char **copy)
 	}
 	free(copy);
 	ft_freemap(msg, map);
-}
-
-int	ft_free(t_game *game)
-{
-	game->errors = 1;
-	if (game->big_line)
-		free(game->big_line);
-	if (game)
-		free(game);
-	exit(0);
 }

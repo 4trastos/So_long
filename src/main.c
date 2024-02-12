@@ -6,25 +6,12 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 12:35:36 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/09 21:37:36 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/12 19:59:07 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "../incl/game.h"
-
-void	print_map(char **map)
-{
-	int	i;
-
-	printf("Map:\n");
-	i = 0;
-	while (map[i] != NULL)
-	{
-		printf("%s\n", map[i]);
-		i++;
-	}
-}
 
 void	ft_leaks(void)
 {
@@ -64,3 +51,15 @@ int	main(int argc, char **argv)
 	ft_free_map(map);
 	return (0);
 }
+/* void	print_map(char **map)
+{
+	int	i;
+
+	printf("Map:\n");
+	i = 0;
+	while (map[i] != NULL)
+	{
+		printf("%s\n", map[i]);
+		i++;
+	}
+} */
