@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_animation.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: usuario <usuario@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 20:30:55 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/09 23:08:46 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/12 18:43:53 by usuario          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "../incl/game.h"
 
-int	key_press(int key, t_game *game, t_design *design)
+int	key_press(int key, t_game *game)
 {
 	char	*moves_p;
 
@@ -25,7 +25,7 @@ int	key_press(int key, t_game *game, t_design *design)
 		exit (0);
 	}
 	 if (key == 13)
-		move_w(game, design);
+		move_w(game);
 	if (key == 0)
 		move_a(game);
 	if (key == 1)
@@ -40,20 +40,24 @@ int	key_press(int key, t_game *game, t_design *design)
 	return (0);
 }
 
-void	move_w(t_game *game, t_design *design)
+void	move_w(t_game *game)
 {
-	printf("Posición de P en yp: %zu\n", design->yp);
+/* 	printf("Posición de P en yp: %zu\n", design->yp);
 	printf("Posición de P en xp: %zu\n", design->xp);
 	printf("Posición de P en posy: %zu\n", game->posy / SIZE);
 	printf("Posición de P en posx: %zu\n", game->posx / SIZE);
-	printf("Posición de P en CHAR: %c\n", game->map[game->posy / SIZE][game->posx / SIZE]);
-	if (game->map[game->posy / SIZE + UP][game->posx / SIZE] == '0')
+	printf("Posición de P en CHAR: %c\n", game->map[game->posy / SIZE][game->posx / SIZE]); */
+	if (game->map[game->posy / SIZE + UP][game->posx / SIZE] == 'E' && game->collect_count == 0)
+		ft_end_game(game);
+	if (game->map[game->posy / SIZE + UP][game->posx / SIZE] == '0' || game->map[game->posy / SIZE + UP][game->posx / SIZE] == 'C')
 	{
 		if ((game->posx / SIZE) % 2 == 0)
 			mlx_put_image_to_window(game->mlx, game->new_w, game->grass, game->posx, game->posy);
 		else
 			mlx_put_image_to_window(game->mlx, game->new_w, game->grasstwo, game->posx, game->posy);
 		game->map[game->posy / SIZE][game->posx / SIZE] = '0';
+		if (game->map[game->posy / SIZE + UP][game->posx / SIZE] == 'C')
+			game->collect_count--;
 		game->map[game->posy / SIZE + UP][game->posx / SIZE] = 'P';
 		game->posy = game->posy - SIZE;
 		game->moves++;
@@ -108,33 +112,3 @@ void	move_d(t_game *game)
 		mlx_put_image_to_window(game->mlx, game->new_w, game->player, game->posx, game->posy);
 	}
 }
-
-/*
-void	move_w(t_list *d)
-{
-	int	i;
-
-	i = 0;
-	while (d->big_line[i] != 'P')
-		i++;
-	if (d->big_line[i - d->width_l] != '1'
-		&& !check_exit(d, d->big_line[i - d->width_l]))
-	{
-		d->moves++;
-		if (d->big_line[i - d->width_l] == 'C')
-			d->consum--;
-		d->big_line[i] = '0';
-		d->big_line[i - d->width_l] = 'P';
-		if (d->npccontrol == 0)
-		{
-			d->npcstart = d->npcback;
-			d->npccontrol = 1;
-		}
-		else
-		{
-			d->npcstart = d->npcbmv;
-			d->npccontrol = 0;
-		}
-	}
-	print_map(d);
-} */

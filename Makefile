@@ -6,7 +6,7 @@
 #    By: usuario <usuario@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/06 12:27:32 by davgalle          #+#    #+#              #
-#    Updated: 2024/02/08 18:47:52 by usuario          ###   ########.fr        #
+#    Updated: 2024/02/12 18:25:35 by usuario          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,6 @@ SRCS = src/main.c \
 	   src/check_movements.c \
 	   src/reset_road.c \
 	   src/ft_radar.c \
-	   src/ft_window.c \
 	   src/sprites.c \
 	   src/ft_player.c \
 	   src/ft_enemy.c \

@@ -18,6 +18,7 @@ void	ft_floor(t_game *game, t_design *design)
 	int	i;
 	int	j;
 
+	game->collect_count = design->collect;
 	j = 0;
 	while (j <= design->rows * SIZE)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: usuario <usuario@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:51:47 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/09 21:53:17 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/12 18:43:44 by usuario          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,13 +121,14 @@ void		ft_put_player(t_game *game);
 
 //** MOVEMENTS **
 
-void		move_w(t_game *game, t_design *design);
+void		move_w(t_game *game);
 void		move_s(t_game *game);
 void		move_a(t_game *game);
 void		move_d(t_game *game);
 
 //** BUTTONS **
 
-int			key_press(int key, t_game *game, t_design *design);
+int			key_press(int key, t_game *game);
+void		ft_end_game(t_game *game);
 
 #endif

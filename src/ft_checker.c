@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_checker.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: usuario <usuario@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:52:43 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/09 19:31:44 by davgalle         ###   ########.fr       */
-/*   Updated: 2024/02/01 18:23:19 by nicgonza         ###   ########.fr       */
+/*   Updated: 2024/02/12 18:22:50 by usuario          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "so_long.h"
 
@@ -33,7 +33,6 @@ char	**ft_check_map(int fd, t_design *design, char **map)
 	copy = ft_matrixdup(map, design);
 	if (!ft_feasible_map(copy, design))
 		ft_freedoublemap("The map is not feasible", map, copy);
-//	design->str = str;
 	free(str);
 	free(error);
 	ft_free_map(copy);
@@ -87,7 +86,6 @@ bool	ft_check_border(char **map, t_design *design)
 		y++;
 	}
 	design->rows = y;
-	design->columns = x;
 	design->columns = x;
 	return (true);
 }

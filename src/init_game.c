@@ -33,16 +33,14 @@ void	ft_game(t_game *game, char **map, t_design *design)
 	game->height = design->rows * SIZE;
 	game->design = design;
 	game->map = map;
-//	print_map(game->map);
 	game->moves = 0;
-//	game->big_line = design->str;
 	game->posx = design->xp * SIZE;
 	game->posy = design->yp * SIZE;
 	ft_load_sprites(game);
-	ft_floor(game, design); //dibuja el cesped.
-	ft_walls(map, game);    //dibuja los muros.
-	ft_collects(map, game, design); //dibuja collect, exit, enemys y suelo.
-	ft_player(map, game, design);  //dibuja el jugador.
+	ft_floor(game, design);
+	ft_walls(map, game);
+	ft_collects(map, game, design);
+	ft_player(map, game, design);
 //	mlx_loop_hook(game->mlx, ft_update, game);
 	mlx_key_hook(game->new_w, key_press, game);
 	mlx_hook(game->new_w, 17, 0, free_sprites, game);
