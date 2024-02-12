@@ -32,7 +32,10 @@ void	ft_game(t_game *game, char **map, t_design *design)
 	game->design = design;
 	game->map = map;
 	game->moves = 0;
+<<<<<<< HEAD
 	game->postcontrol = 0;
+=======
+>>>>>>> cc13f97359c18d992a572bbbee4db337d87fa31b
 	game->posx = design->xp * SIZE;
 	game->posy = design->yp * SIZE;
 	ft_load_sprites(game);
@@ -40,6 +43,10 @@ void	ft_game(t_game *game, char **map, t_design *design)
 	ft_walls(map, game);
 	ft_collects(map, game, design);
 	ft_player(map, game, design);
+<<<<<<< HEAD
+=======
+//	mlx_loop_hook(game->mlx, ft_update, game);
+>>>>>>> cc13f97359c18d992a572bbbee4db337d87fa31b
 	mlx_key_hook(game->new_w, key_press, game);
 	mlx_hook(game->new_w, 17, 0, free_sprites, game);
 	mlx_loop(game->mlx);

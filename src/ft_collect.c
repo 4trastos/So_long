@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_collect.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: usuario <usuario@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:02:12 by davgalle          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/02/12 20:01:13 by davgalle         ###   ########.fr       */
+=======
+/*   Updated: 2024/02/12 18:43:35 by usuario          ###   ########.fr       */
+>>>>>>> cc13f97359c18d992a572bbbee4db337d87fa31b
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +44,7 @@ void	ft_collects(char **map, t_game *game, t_design *design)
 	}
 }
 
+<<<<<<< HEAD
 void	ft_win_game(t_game *game)
 {
 	mlx_destroy_window(game->mlx, game->new_w);
@@ -50,4 +55,9 @@ void	ft_putmoves(int c)
 {
 	 write(1, (char*)&c, 1);
 	write(1, "\n", 1);
+=======
+void	ft_end_game(t_game *game)
+{
+	mlx_destroy_window(game->mlx, game->new_w);	
+>>>>>>> cc13f97359c18d992a572bbbee4db337d87fa31b
 }

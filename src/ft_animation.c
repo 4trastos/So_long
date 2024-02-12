@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_animation.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: usuario <usuario@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 20:30:55 by davgalle          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/02/12 21:00:12 by davgalle         ###   ########.fr       */
+=======
+/*   Updated: 2024/02/12 18:43:53 by usuario          ###   ########.fr       */
+>>>>>>> cc13f97359c18d992a572bbbee4db337d87fa31b
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +44,18 @@ int	key_press(int key, t_game *game)
 
 void	move_w(t_game *game)
 {
+<<<<<<< HEAD
 	if (game->map[game->posy / SIZE + UP][game->posx / SIZE] == 'E' && game->collect_count == 0)
 		ft_win_game(game);
+=======
+/* 	printf("Posición de P en yp: %zu\n", design->yp);
+	printf("Posición de P en xp: %zu\n", design->xp);
+	printf("Posición de P en posy: %zu\n", game->posy / SIZE);
+	printf("Posición de P en posx: %zu\n", game->posx / SIZE);
+	printf("Posición de P en CHAR: %c\n", game->map[game->posy / SIZE][game->posx / SIZE]); */
+	if (game->map[game->posy / SIZE + UP][game->posx / SIZE] == 'E' && game->collect_count == 0)
+		ft_end_game(game);
+>>>>>>> cc13f97359c18d992a572bbbee4db337d87fa31b
 	if (game->map[game->posy / SIZE + UP][game->posx / SIZE] == '0' || game->map[game->posy / SIZE + UP][game->posx / SIZE] == 'C')
 	{
 		if ((game->posx / SIZE) % 2 == 0)

@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: usuario <usuario@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:51:47 by davgalle          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/02/12 21:02:47 by davgalle         ###   ########.fr       */
+=======
+/*   Updated: 2024/02/12 18:43:44 by usuario          ###   ########.fr       */
+>>>>>>> cc13f97359c18d992a572bbbee4db337d87fa31b
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +115,11 @@ void		ft_moveleft(t_game *game);
 //** BUTTONS **
 
 int			key_press(int key, t_game *game);
+<<<<<<< HEAD
 void		ft_win_game(t_game *game);
 void		ft_putmoves(int c);
+=======
+void		ft_end_game(t_game *game);
+>>>>>>> cc13f97359c18d992a572bbbee4db337d87fa31b
 
 #endif
