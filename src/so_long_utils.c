@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:41:23 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/29 18:44:04 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/13 16:47:31 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ bool	is_valid_char(char c, t_error *error)
 	else if (c == aux->player)
 		return (true);
 	else if (c == aux->enemys)
-		return (true);
+		return (false);
 	else if (c == aux->collect)
 		return (true);
 	else

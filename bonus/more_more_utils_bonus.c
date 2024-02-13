@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 17:33:24 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/13 14:50:53 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/13 17:32:13 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char	**ft_matrixdup(char **map, t_design *design)
 	return (copy);
 }
 
-void		load_enemies(char **map, t_design *design)
+void	load_enemies(char **map, t_design *design)
 {
 	size_t	y;
 	size_t	x;

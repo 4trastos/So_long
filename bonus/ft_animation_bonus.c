@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 20:30:55 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/13 16:23:09 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/13 17:59:20 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	key_press(int key, t_game *game)
 		mlx_destroy_window(game->mlx, game->new_w);
 		exit (0);
 	}
-	 if (key == 13)
+	if (key == 13)
 		move_w(game);
 	if (key == 0)
 		move_a(game);
@@ -31,10 +31,7 @@ int	key_press(int key, t_game *game)
 	if (key == 2)
 		move_d(game);
 	moves_p = ft_itoa(game->moves);
-	mlx_put_image_to_window(game->mlx, game->new_w, game->grass, game->width - 70, game->height - 20);
-	mlx_put_image_to_window(game->mlx, game->new_w, game->grass, game->width - 125, game->height - 20);
-	mlx_string_put(game->mlx, game->new_w, game->width - 120, game->height - 20, 0xFFFFFF, "MOVES:");
-	mlx_string_put(game->mlx, game->new_w, game->width - 40, game->height - 20, 0xFFFFFF, moves_p);
+	ft_countermov(game, moves_p);
 	if (moves_p)
 		free(moves_p);
 	return (0);
@@ -42,16 +39,20 @@ int	key_press(int key, t_game *game)
 
 void	move_w(t_game *game)
 {
-	if (game->map[game->posy / SIZE + UP][game->posx / SIZE] == 'E' && game->collect_count == 0)
+	if (game->map[game->posy / SIZE + UP][game->posx / SIZE] == 'E' &&
+			game->collect_count == 0)
 		ft_win_game(game);
 	if (game->map[game->posy / SIZE + UP][game->posx / SIZE] == 'W')
 		ft_lose_game(game);
-	if (game->map[game->posy / SIZE + UP][game->posx / SIZE] == '0' || game->map[game->posy / SIZE + UP][game->posx / SIZE] == 'C')
+	if (game->map[game->posy / SIZE + UP][game->posx / SIZE] == '0' ||
+			game->map[game->posy / SIZE + UP][game->posx / SIZE] == 'C')
 	{
 		if ((game->posx / SIZE) % 2 == 0)
-			mlx_put_image_to_window(game->mlx, game->new_w, game->grass, game->posx, game->posy);
+			mlx_put_image_to_window(game->mlx, game->new_w, game->grass,
+				game->posx, game->posy);
 		else
-			mlx_put_image_to_window(game->mlx, game->new_w, game->grasstwo, game->posx, game->posy);
+			mlx_put_image_to_window(game->mlx, game->new_w, game->grasstwo,
+				game->posx, game->posy);
 		game->map[game->posy / SIZE][game->posx / SIZE] = '0';
 		if (game->map[game->posy / SIZE + UP][game->posx / SIZE] == 'C')
 			game->collect_count--;
@@ -59,22 +60,27 @@ void	move_w(t_game *game)
 		game->posy = game->posy - SIZE;
 		game->moves++;
 		ft_moveup(game);
-		mlx_put_image_to_window(game->mlx, game->new_w, game->playerup, game->posx, game->posy);
+		mlx_put_image_to_window(game->mlx, game->new_w, game->playerup,
+			game->posx, game->posy);
 	}
 }
 
 void	move_s(t_game *game)
 {
-	if (game->map[game->posy / SIZE + DOWN][game->posx / SIZE] == 'E' && game->collect_count == 0)
+	if (game->map[game->posy / SIZE + DOWN][game->posx / SIZE] == 'E' &&
+			game->collect_count == 0)
 		ft_win_game(game);
 	if (game->map[game->posy / SIZE + DOWN][game->posx / SIZE] == 'W')
 		ft_lose_game(game);
-	if (game->map[game->posy / SIZE + DOWN][game->posx / SIZE] == '0' || game->map[game->posy / SIZE + DOWN][game->posx / SIZE] == 'C')
+	if (game->map[game->posy / SIZE + DOWN][game->posx / SIZE] == '0' ||
+			game->map[game->posy / SIZE + DOWN][game->posx / SIZE] == 'C')
 	{
 		if ((game->posx / SIZE) % 2 == 0)
-			mlx_put_image_to_window(game->mlx, game->new_w, game->grass, game->posx, game->posy);
+			mlx_put_image_to_window(game->mlx, game->new_w, game->grass,
+				game->posx, game->posy);
 		else
-			mlx_put_image_to_window(game->mlx, game->new_w, game->grasstwo, game->posx, game->posy);
+			mlx_put_image_to_window(game->mlx, game->new_w, game->grasstwo,
+				game->posx, game->posy);
 		game->map[game->posy / SIZE][game->posx / SIZE] = '0';
 		if (game->map[game->posy / SIZE + DOWN][game->posx / SIZE] == 'C')
 			game->collect_count--;
@@ -82,22 +88,27 @@ void	move_s(t_game *game)
 		game->posy = game->posy + SIZE;
 		game->moves++;
 		ft_movedown(game);
-		mlx_put_image_to_window(game->mlx, game->new_w, game->playerdown, game->posx, game->posy);
+		mlx_put_image_to_window(game->mlx, game->new_w, game->playerdown,
+			game->posx, game->posy);
 	}
 }
 
 void	move_a(t_game *game)
 {
-	if (game->map[game->posy / SIZE][game->posx / SIZE - 1] == 'E' && game->collect_count == 0)
+	if (game->map[game->posy / SIZE][game->posx / SIZE - 1] == 'E' &&
+			game->collect_count == 0)
 		ft_win_game(game);
 	if (game->map[game->posy / SIZE][game->posx / SIZE - 1] == 'W')
 		ft_lose_game(game);
-	if (game->map[game->posy / SIZE][game->posx / SIZE - 1] == '0' || game->map[game->posy / SIZE][game->posx / SIZE - 1] == 'C')
+	if (game->map[game->posy / SIZE][game->posx / SIZE - 1] == '0' ||
+			game->map[game->posy / SIZE][game->posx / SIZE - 1] == 'C')
 	{
 		if ((game->posx / SIZE) % 2 == 0)
-			mlx_put_image_to_window(game->mlx, game->new_w, game->grass, game->posx, game->posy);
+			mlx_put_image_to_window(game->mlx, game->new_w, game->grass,
+				game->posx, game->posy);
 		else
-			mlx_put_image_to_window(game->mlx, game->new_w, game->grasstwo, game->posx, game->posy);
+			mlx_put_image_to_window(game->mlx, game->new_w, game->grasstwo,
+				game->posx, game->posy);
 		game->map[game->posy / SIZE][game->posx / SIZE] = '0';
 		if (game->map[game->posy / SIZE][game->posx / SIZE - 1] == 'C')
 			game->collect_count--;
@@ -105,22 +116,27 @@ void	move_a(t_game *game)
 		game->posx = game->posx - SIZE;
 		game->moves++;
 		ft_moveleft(game);
-		mlx_put_image_to_window(game->mlx, game->new_w, game->playerleft, game->posx, game->posy);
+		mlx_put_image_to_window(game->mlx, game->new_w, game->playerleft,
+			game->posx, game->posy);
 	}
 }
 
 void	move_d(t_game *game)
 {
-	if (game->map[game->posy / SIZE][game->posx / SIZE + 1] == 'E' && game->collect_count == 0)
+	if (game->map[game->posy / SIZE][game->posx / SIZE + 1] == 'E' &&
+			game->collect_count == 0)
 		ft_win_game(game);
 	if (game->map[game->posy / SIZE][game->posx / SIZE + 1] == 'W')
 		ft_lose_game(game);
-	if (game->map[game->posy / SIZE][game->posx / SIZE + 1] == '0' || game->map[game->posy / SIZE][game->posx / SIZE + 1] == 'C')
+	if (game->map[game->posy / SIZE][game->posx / SIZE + 1] == '0' ||
+			game->map[game->posy / SIZE][game->posx / SIZE + 1] == 'C')
 	{
 		if ((game->posx / SIZE) % 2 == 0)
-			mlx_put_image_to_window(game->mlx, game->new_w, game->grass, game->posx, game->posy);
+			mlx_put_image_to_window(game->mlx, game->new_w, game->grass,
+				game->posx, game->posy);
 		else
-			mlx_put_image_to_window(game->mlx, game->new_w, game->grasstwo, game->posx, game->posy);
+			mlx_put_image_to_window(game->mlx, game->new_w, game->grasstwo,
+				game->posx, game->posy);
 		game->map[game->posy / SIZE][game->posx / SIZE] = '0';
 		if (game->map[game->posy / SIZE][game->posx / SIZE + 1] == 'C')
 			game->collect_count--;
@@ -128,6 +144,7 @@ void	move_d(t_game *game)
 		game->posx = game->posx + SIZE;
 		game->moves++;
 		ft_moveright(game);
-		mlx_put_image_to_window(game->mlx, game->new_w, game->playeright, game->posx, game->posy);
+		mlx_put_image_to_window(game->mlx, game->new_w, game->playeright,
+			game->posx, game->posy);
 	}
 }

@@ -6,19 +6,18 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:02:12 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/13 13:53:09 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/13 17:42:31 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "../incl/game.h"
 
-void	ft_collects(char **map, t_game *game, t_design *design)
+void	ft_collects(char **map, t_game *game)
 {
 	int	x;
 	int	y;
 
-	(void)design;
 	y = 0;
 	while (map[y] != NULL)
 	{
@@ -27,11 +26,13 @@ void	ft_collects(char **map, t_game *game, t_design *design)
 		{
 			if (map[y][x] == 'C')
 			{
-				mlx_put_image_to_window(game->mlx, game->new_w, game->collect, SIZE * x, SIZE * y);
+				mlx_put_image_to_window(game->mlx, game->new_w,
+					game->collect, SIZE * x, SIZE * y);
 				game->collect_count++;
 			}
 			else if (map[y][x] == 'E')
-				mlx_put_image_to_window(game->mlx, game->new_w, game->exit, SIZE * x, SIZE * y);
+				mlx_put_image_to_window(game->mlx, game->new_w,
+					game->exit, SIZE * x, SIZE * y);
 			x++;
 		}
 		y++;
@@ -46,6 +47,6 @@ void	ft_win_game(t_game *game)
 
 void	ft_putmoves(int c)
 {
-	 write(1, (char*)&c, 1);
+	write(1, (char *)&c, 1);
 	write(1, "\n", 1);
 }

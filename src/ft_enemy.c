@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 15:15:05 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/13 13:50:23 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/13 17:25:28 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	ft_moveup(t_game *game)
 {
 	if (game->postcontrol == 0)
 	{
-    	game->playerup = game->playerupA;
-    	game->postcontrol = 1;
+		game->playerup = game->playerupa;
+		game->postcontrol = 1;
 	}
 	else if (game->postcontrol == 1)
 	{
-    	game->playerup = game->playerupB;
-    	game->postcontrol = 0;
+		game->playerup = game->playerupb;
+		game->postcontrol = 0;
 	}
 }
 
@@ -31,13 +31,13 @@ void	ft_movedown(t_game *game)
 {
 	if (game->postcontrol == 0)
 	{
-		game->playerdown = game->playerdownA;
+		game->playerdown = game->playerdowna;
 		game->postcontrol = 1;
 	}
 	else if (game->postcontrol == 1)
 	{
-   		game->playerdown = game->playerdownB;
-    	game->postcontrol = 0;
+		game->playerdown = game->playerdownb;
+		game->postcontrol = 0;
 	}
 }
 
@@ -45,13 +45,13 @@ void	ft_moveright(t_game *game)
 {
 	if (game->postcontrol == 0)
 	{
-		game->playeright = game->playerightA;
+		game->playeright = game->playerighta;
 		game->postcontrol = 1;
 	}
 	else if (game->postcontrol == 1)
 	{
-   		game->playeright = game->playerightB;
-    	game->postcontrol = 0;
+		game->playeright = game->playerightb;
+		game->postcontrol = 0;
 	}
 }
 
@@ -59,12 +59,12 @@ void	ft_moveleft(t_game *game)
 {
 	if (game->postcontrol == 0)
 	{
-		game->playerleft = game->playerleftA;
+		game->playerleft = game->playerlefta;
 		game->postcontrol = 1;
 	}
 	else if (game->postcontrol == 1)
 	{
-   		game->playerleft = game->playerleftB;
-    	game->postcontrol = 0;
+		game->playerleft = game->playerleftb;
+		game->postcontrol = 0;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 12:35:36 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/13 14:53:08 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/13 17:32:52 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	**ft_check_arg(int argc, char **argv, t_design *design, char **map)
 }
 
 int	main(int argc, char **argv)
-{	
+{
 	char		**map;
 	t_design	*design;
 

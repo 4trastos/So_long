@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 15:50:56 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/13 14:49:45 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/13 17:35:57 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,14 @@ void	ft_floor(t_game *game, t_design *design)
 	while (j <= design->rows * SIZE)
 	{
 		i = 0;
-		while (i <= design->columns	* SIZE)
+		while (i <= design->columns * SIZE)
 		{
 			mlx_put_image_to_window(game->mlx, game->new_w, game->grass, i, j);
 			i = i + SIZE;
 			if (i <= design->columns * SIZE)
 			{
-				mlx_put_image_to_window(game->mlx, game->new_w, game->grasstwo, i, j);
+				mlx_put_image_to_window(game->mlx,
+					game->new_w, game->grasstwo, i, j);
 				i = i + SIZE;
 			}
 		}
@@ -49,7 +50,8 @@ void	ft_walls(char **map, t_game *game)
 		while (map[y][x] != '\0')
 		{
 			if (map[y][x] == '1')
-				mlx_put_image_to_window(game->mlx, game->new_w, game->wall, SIZE * x, SIZE * y);
+				mlx_put_image_to_window(game->mlx,
+					game->new_w, game->wall, SIZE * x, SIZE * y);
 			x++;
 		}
 		y++;
@@ -68,7 +70,8 @@ void	ft_enemy(char **map, t_game *game)
 		while (map[y][x] != '\0')
 		{
 			if (map[y][x] == 'W')
-				mlx_put_image_to_window(game->mlx, game->new_w, game->enemys, SIZE * x, SIZE * y);
+				mlx_put_image_to_window(game->mlx, game->new_w,
+					game->enemys, SIZE * x, SIZE * y);
 			x++;
 		}
 		y++;
