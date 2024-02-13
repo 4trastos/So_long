@@ -6,13 +6,13 @@
 #    By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/06 12:27:32 by davgalle          #+#    #+#              #
-#    Updated: 2024/02/13 15:04:46 by davgalle         ###   ########.fr        #
+#    Updated: 2024/02/13 15:38:22 by davgalle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-BONUS_NAME = so_long_bonus
+NAME_BONUS = so_long_bonus
 
 CC = gcc
 
@@ -79,18 +79,22 @@ BONUS_OBJECTS = ${BONUS:.c=.o}
 
 all: $(NAME)
 
+bonus: $(NAME_BONUS)
+
 $(NAME): $(OBJTS)
 	$(CC) $(FLAGS)  -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(OBJTS)
 
-bonus: ${BONUS_OBJECTS}
-	$(CC) $(FLAGS)  -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(BONUS_OBJECTS)
+$(NAME_BONUS): ${BONUS_OBJECTS}
+	$(CC) $(FLAGS)  -lmlx -framework OpenGL -framework AppKit -o $(NAME_BONUS) $(BONUS_OBJECTS)
 
 clean:
 	$(RM) $(OBJTS) ${BONUS_OBJECTS}
 
 fclean: clean
 	$(RM) $(NAME)
-	$(RM) $(OBJTS) ${BONUS_OBJECTS}
+	$(RM) $(OBJTS)
+	$(RM) $(NAME_BONUS)
+	$(RM) $(BONUS_OBJECTS)
 
 re: all clean
 

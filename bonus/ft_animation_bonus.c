@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 20:30:55 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/13 14:47:30 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/13 16:23:09 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,12 @@ int	key_press(int key, t_game *game)
 	if (key == 2)
 		move_d(game);
 	moves_p = ft_itoa(game->moves);
-	write(1, moves_p, ft_strlen(moves_p));
+	mlx_put_image_to_window(game->mlx, game->new_w, game->grass, game->width - 70, game->height - 20);
+	mlx_put_image_to_window(game->mlx, game->new_w, game->grass, game->width - 125, game->height - 20);
+	mlx_string_put(game->mlx, game->new_w, game->width - 120, game->height - 20, 0xFFFFFF, "MOVES:");
+	mlx_string_put(game->mlx, game->new_w, game->width - 40, game->height - 20, 0xFFFFFF, moves_p);
 	if (moves_p)
 		free(moves_p);
-	write(1, "\n", 1);
 	return (0);
 }
 
