@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 21:13:01 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/13 14:55:38 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/13 20:15:10 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ bool	ft_restmap(char *str, t_design *design)
 	design->player = x;
 	design->enemys = y;
 	design->collect = z;
-	if (x != 1 || z < 1)
+	if (x != 1 || z < 1 || y == 0)
 		return (false);
 	else
 		return (true);
