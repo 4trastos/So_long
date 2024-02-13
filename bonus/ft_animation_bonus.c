@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_animation.c                                     :+:      :+:    :+:   */
+/*   ft_animation_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 20:30:55 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/13 13:47:04 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/13 14:47:30 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	move_w(t_game *game)
 {
 	if (game->map[game->posy / SIZE + UP][game->posx / SIZE] == 'E' && game->collect_count == 0)
 		ft_win_game(game);
+	if (game->map[game->posy / SIZE + UP][game->posx / SIZE] == 'W')
+		ft_lose_game(game);
 	if (game->map[game->posy / SIZE + UP][game->posx / SIZE] == '0' || game->map[game->posy / SIZE + UP][game->posx / SIZE] == 'C')
 	{
 		if ((game->posx / SIZE) % 2 == 0)
@@ -63,6 +65,8 @@ void	move_s(t_game *game)
 {
 	if (game->map[game->posy / SIZE + DOWN][game->posx / SIZE] == 'E' && game->collect_count == 0)
 		ft_win_game(game);
+	if (game->map[game->posy / SIZE + DOWN][game->posx / SIZE] == 'W')
+		ft_lose_game(game);
 	if (game->map[game->posy / SIZE + DOWN][game->posx / SIZE] == '0' || game->map[game->posy / SIZE + DOWN][game->posx / SIZE] == 'C')
 	{
 		if ((game->posx / SIZE) % 2 == 0)
@@ -84,6 +88,8 @@ void	move_a(t_game *game)
 {
 	if (game->map[game->posy / SIZE][game->posx / SIZE - 1] == 'E' && game->collect_count == 0)
 		ft_win_game(game);
+	if (game->map[game->posy / SIZE][game->posx / SIZE - 1] == 'W')
+		ft_lose_game(game);
 	if (game->map[game->posy / SIZE][game->posx / SIZE - 1] == '0' || game->map[game->posy / SIZE][game->posx / SIZE - 1] == 'C')
 	{
 		if ((game->posx / SIZE) % 2 == 0)
@@ -105,6 +111,8 @@ void	move_d(t_game *game)
 {
 	if (game->map[game->posy / SIZE][game->posx / SIZE + 1] == 'E' && game->collect_count == 0)
 		ft_win_game(game);
+	if (game->map[game->posy / SIZE][game->posx / SIZE + 1] == 'W')
+		ft_lose_game(game);
 	if (game->map[game->posy / SIZE][game->posx / SIZE + 1] == '0' || game->map[game->posy / SIZE][game->posx / SIZE + 1] == 'C')
 	{
 		if ((game->posx / SIZE) % 2 == 0)

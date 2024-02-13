@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_collect.c                                       :+:      :+:    :+:   */
+/*   ft_collect_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:02:12 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/13 13:53:09 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/13 14:48:11 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,17 @@ void	ft_collects(char **map, t_game *game, t_design *design)
 			}
 			else if (map[y][x] == 'E')
 				mlx_put_image_to_window(game->mlx, game->new_w, game->exit, SIZE * x, SIZE * y);
+			else if (map[y][x] == 'W')
+				mlx_put_image_to_window(game->mlx, game->new_w, game->enemys, SIZE * x, SIZE * y);
 			x++;
 		}
 		y++;
 	}
+}
+void	ft_lose_game(t_game *game)
+{
+	mlx_destroy_window(game->mlx, game->new_w);
+	ft_error_msg("You lose!!! 💀\n", NULL);
 }
 
 void	ft_win_game(t_game *game)

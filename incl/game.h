@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: usuario <usuario@student.42.fr>            +#+  +:+       +#+        */
+/*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:51:47 by davgalle          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/02/12 21:02:47 by davgalle         ###   ########.fr       */
-=======
-/*   Updated: 2024/02/12 18:43:44 by usuario          ###   ########.fr       */
->>>>>>> cc13f97359c18d992a572bbbee4db337d87fa31b
+/*   Updated: 2024/02/13 14:52:26 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +14,6 @@
 # define GAME_H
 
 # define SIZE 64
-
-void	window(void);
-
-//** DIRECTION **
-
-enum e_direction
-{
-	ST = 0,
-	N = 1,
-	S = -1,
-	E = 2,
-	W = -2
-};
 
 //** STRUCT MLX **
 
@@ -41,6 +24,7 @@ typedef struct	s_game
 	int				collect_count;
 	int				moves;
 	int				postcontrol;
+	int				spenemy;
 	t_design		*design;
 	size_t			posx;
 	size_t			posy;
@@ -51,9 +35,10 @@ typedef struct	s_game
 	void			*grass;
 	void			*grasstwo;
 	void			*exit;
-	void			*player;
-	void			*playerA;
-	void			*playerB;
+	void			*init;
+	void			*playerleft;
+	void			*playerleftA;
+	void			*playerleftB;
 	void			*playerup;
 	void			*playerupA;
 	void			*playerupB;
@@ -65,6 +50,9 @@ typedef struct	s_game
 	void			*playerightB;
 	void			*collect;
 	void			*enemys;
+	void			*enemy02;
+	void			*enemy03;
+	void			*enemy04;
 	char			**map;
 	char			**floor;
 }				t_game;
@@ -87,7 +75,6 @@ int			main(int argc, char **argv);
 void		ft_game(t_game *game, char **map, t_design *design);
 void		ft_player(char **map, t_game *game, t_design *design);
 void		ft_load_enemy(char **map, t_game *game);
-bool		check_exit(t_game *game, char letter);
 char		*ft_itoa(int n);
 
 //** CLOSE GAME **
@@ -115,11 +102,8 @@ void		ft_moveleft(t_game *game);
 //** BUTTONS **
 
 int			key_press(int key, t_game *game);
-<<<<<<< HEAD
 void		ft_win_game(t_game *game);
+void		ft_lose_game(t_game *game);
 void		ft_putmoves(int c);
-=======
-void		ft_end_game(t_game *game);
->>>>>>> cc13f97359c18d992a572bbbee4db337d87fa31b
 
 #endif

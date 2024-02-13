@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sprites.c                                          :+:      :+:    :+:   */
+/*   sprites_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 19:07:03 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/13 13:49:49 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/13 14:51:29 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ void	ft_load_sprites(t_game *game)
 	game->playerightA = mlx_xpm_file_to_image(game->mlx, "textures/xpm/beniat_right.xpm", &size, &size);
 	game->playerightB = mlx_xpm_file_to_image(game->mlx, "textures/xpm/beniat_right02.xpm", &size, &size);
 	game->exit = mlx_xpm_file_to_image(game->mlx, "textures/xpm/champions.xpm", &size, &size);
+	game->enemys = mlx_xpm_file_to_image(game->mlx, "textures/xpm/ghost/ghost01.xpm", &size, &size);
+	game->enemy02 = mlx_xpm_file_to_image(game->mlx, "textures/xpm/ghost/ghost03.xpm", &size, &size);
+	game->enemy03 = mlx_xpm_file_to_image(game->mlx, "textures/xpm/ghost/ghost05.xpm", &size, &size);
+	game->enemy04 = mlx_xpm_file_to_image(game->mlx, "textures/xpm/ghost/ghost07.xpm", &size, &size);
 	game->collect = mlx_xpm_file_to_image(game->mlx, "textures/xpm/reala.xpm", &size, &size);
 }
 
@@ -40,6 +44,7 @@ int	free_sprites(t_game *game)
 	mlx_destroy_image(game->mlx, game->grass);
 	mlx_destroy_image(game->mlx, game->playerleftB);
 	mlx_destroy_image(game->mlx, game->exit);
+	mlx_destroy_image(game->mlx, game->enemys);
 	mlx_destroy_image(game->mlx, game->grasstwo);
 	mlx_destroy_image(game->mlx, game->collect);
 	mlx_destroy_image(game->mlx, game->playerdownA);

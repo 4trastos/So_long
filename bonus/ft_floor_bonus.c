@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_floor.c                                         :+:      :+:    :+:   */
+/*   ft_floor_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 15:50:56 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/13 13:50:58 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/13 14:49:45 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,25 @@ void	ft_walls(char **map, t_game *game)
 		{
 			if (map[y][x] == '1')
 				mlx_put_image_to_window(game->mlx, game->new_w, game->wall, SIZE * x, SIZE * y);
+			x++;
+		}
+		y++;
+	}
+}
+
+void	ft_enemy(char **map, t_game *game)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (map[y] != NULL)
+	{
+		x = 0;
+		while (map[y][x] != '\0')
+		{
+			if (map[y][x] == 'W')
+				mlx_put_image_to_window(game->mlx, game->new_w, game->enemys, SIZE * x, SIZE * y);
 			x++;
 		}
 		y++;
