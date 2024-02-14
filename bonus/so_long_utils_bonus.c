@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:41:23 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/13 14:51:07 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/14 13:19:43 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 int	ft_strnrcmp(char *argv, char *str, int count)
 {
 	int	i;
+	int	j;
 
+	j = ft_strlen(argv);
+	if (j == 9)
+		return (1);
 	i = ft_strlen(argv) - 1;
 	count = 3;
 	while (count >= 0 && i >= 0)
