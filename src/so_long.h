@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 12:37:32 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/09 22:58:17 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/20 16:33:15 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ void		ft_error_msg(char *msg, char **map);
 void		ft_error_map(char *msg, char *line);
 void		ft_freemap(char *msg, char **map);
 void		ft_freedoublemap(char *msg, char **map, char **copy);
+char		**free_copy(char **copy);
 
 //** create new design node **
 
@@ -141,7 +142,6 @@ bool		ft_getx(char **map, int c);
 size_t		ft_playlines(char **map);
 size_t		ft_countboxes(char **map);
 bool		ft_ifpow(char **map, t_design *design);
-char		**ft_matrixdup(char **map, t_design *design);
 bool		ft_canmove(char **map, t_design *design, t_move *move);
 void		reset_road(char **map);
 void		to_walk(char **map, t_design *design, t_radar *radar);

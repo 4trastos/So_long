@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_checker.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: usuario <usuario@student.42.fr>            +#+  +:+       +#+        */
+/*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:52:43 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/13 16:53:15 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/20 16:25:09 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ char	**ft_check_map(int fd, t_design *design, char **map)
 	map = ft_split(str, '\n');
 	if (!ft_check_border(map, design))
 		ft_freemap("The map must be closed by walls", map);
-	copy = ft_matrixdup(map, design);
+	copy = ft_split(str, '\n');
 	if (!ft_feasible_map(copy, design))
 		ft_freedoublemap("The map is not feasible", map, copy);
 	free(str);
 	free(error);
-	ft_free_map(copy);
+	free_copy(copy);
 	return (map);
 }
 

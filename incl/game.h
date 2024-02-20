@@ -6,14 +6,14 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:51:47 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/13 17:56:01 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:02:17 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GAME_H
 # define GAME_H
 
-# define SIZE 64
+# define SIZE 63
 
 //** STRUCT MLX **
 
@@ -28,6 +28,8 @@ typedef struct s_game
 	t_design		*design;
 	size_t			posx;
 	size_t			posy;
+	size_t			posxe;
+	size_t			posye;
 	void			*mlx;
 	void			*new_w;
 	void			*img;
@@ -78,10 +80,12 @@ void		ft_game(t_game *game, char **map, t_design *design);
 void		ft_player(t_game *game);
 void		ft_load_enemy(char **map, t_game *game);
 char		*ft_itoa(int n);
+void		ft_exit(t_game *game);
 
 //** CLOSE GAME **
 
 int			free_sprites(t_game *game);
+int			close_window(t_game *game);
 
 //** PLAYERS / ENEMIES **
 

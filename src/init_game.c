@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:45:36 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/13 17:42:15 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/20 16:53:53 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	ft_game(t_game *game, char **map, t_design *design)
 	game->postcontrol = 0;
 	game->posx = design->xp * SIZE;
 	game->posy = design->yp * SIZE;
+	game->posxe = design->xe * SIZE;
+	game->posye = design->ye * SIZE;
 	ft_load_sprites(game);
 	ft_loadsprites(game);
 	ft_floor(game, design);
@@ -43,6 +45,13 @@ void	ft_game(t_game *game, char **map, t_design *design)
 	ft_collects(map, game);
 	ft_player(game);
 	mlx_key_hook(game->new_w, key_press, game);
-	mlx_hook(game->new_w, 17, 0, free_sprites, game);
+	mlx_hook(game->new_w, 17, 0, close_window, game);
 	mlx_loop(game->mlx);
+}
+
+int	close_window(t_game *game)
+{
+	mlx_destroy_window(game->mlx, game->new_w);
+	exit(0);
+	return (0);
 }

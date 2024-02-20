@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 20:30:55 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/13 17:21:24 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:01:25 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	move_w(t_game *game)
 		game->map[game->posy / SIZE][game->posx / SIZE] = '0';
 		if (game->map[game->posy / SIZE + UP][game->posx / SIZE] == 'C')
 			game->collect_count--;
+		if (game->collect_count == 0)
+			ft_exit(game);
 		game->map[game->posy / SIZE + UP][game->posx / SIZE] = 'P';
 		game->posy = game->posy - SIZE;
 		game->moves++;
@@ -81,6 +83,8 @@ void	move_s(t_game *game)
 		game->map[game->posy / SIZE][game->posx / SIZE] = '0';
 		if (game->map[game->posy / SIZE + DOWN][game->posx / SIZE] == 'C')
 			game->collect_count--;
+		if (game->collect_count == 0)
+			ft_exit(game);
 		game->map[game->posy / SIZE + DOWN][game->posx / SIZE] = 'P';
 		game->posy = game->posy + SIZE;
 		game->moves++;
@@ -107,6 +111,8 @@ void	move_a(t_game *game)
 		game->map[game->posy / SIZE][game->posx / SIZE] = '0';
 		if (game->map[game->posy / SIZE][game->posx / SIZE - 1] == 'C')
 			game->collect_count--;
+		if (game->collect_count == 0)
+			ft_exit(game);
 		game->map[game->posy / SIZE][game->posx / SIZE - 1] = 'P';
 		game->posx = game->posx - SIZE;
 		game->moves++;
@@ -133,6 +139,8 @@ void	move_d(t_game *game)
 		game->map[game->posy / SIZE][game->posx / SIZE] = '0';
 		if (game->map[game->posy / SIZE][game->posx / SIZE + 1] == 'C')
 			game->collect_count--;
+		if (game->collect_count == 0)
+			ft_exit(game);
 		game->map[game->posy / SIZE][game->posx / SIZE + 1] = 'P';
 		game->posx = game->posx + SIZE;
 		game->moves++;

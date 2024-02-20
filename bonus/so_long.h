@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_bonus.h                                    :+:      :+:    :+:   */
+/*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 12:37:32 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/13 14:54:27 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/20 16:35:18 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,6 @@ bool		ft_getx(char **map, int c);
 size_t		ft_playlines(char **map);
 size_t		ft_countboxes(char **map);
 bool		ft_ifpow(char **map, t_design *design);
-char		**ft_matrixdup(char **map, t_design *design);
 bool		ft_canmove(char **map, t_design *design, t_move *move);
 void		reset_road(char **map);
 void		to_walk(char **map, t_design *design, t_radar *radar);

@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:02:12 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/13 17:42:31 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:12:45 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ void	ft_collects(char **map, t_game *game)
 				game->collect_count++;
 			}
 			else if (map[y][x] == 'E')
-				mlx_put_image_to_window(game->mlx, game->new_w,
-					game->exit, SIZE * x, SIZE * y);
+				x++;
 			x++;
 		}
 		y++;
@@ -49,4 +48,24 @@ void	ft_putmoves(int c)
 {
 	write(1, (char *)&c, 1);
 	write(1, "\n", 1);
+}
+
+void	ft_exit(t_game *game)
+{
+	mlx_put_image_to_window(game->mlx, game->new_w,
+		game->exit, game->posxe, game->posye);
+}
+
+char	**free_copy(char **copy)
+{
+	int	i;
+
+	i = 0;
+	while (copy[i] != NULL)
+	{
+		free(copy[i]);
+		i++;
+	}
+	free(copy);
+	return (NULL);
 }

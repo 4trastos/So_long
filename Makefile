@@ -6,7 +6,7 @@
 #    By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/06 12:27:32 by davgalle          #+#    #+#              #
-#    Updated: 2024/02/13 15:38:22 by davgalle         ###   ########.fr        #
+#    Updated: 2024/02/20 16:36:39 by davgalle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME_BONUS = so_long_bonus
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -Imlx -c -o -fsanitize=address -g3
+CFLAGS = -Wall -Werror -Wextra -Imlx -c -o
 
 RM = rm -f
 
