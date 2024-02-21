@@ -6,14 +6,14 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:51:47 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/20 17:02:17 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:52:30 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GAME_H
 # define GAME_H
 
-# define SIZE 63
+# define SIZE 64
 
 //** STRUCT MLX **
 
@@ -56,7 +56,6 @@ typedef struct s_game
 	void			*enemy03;
 	void			*enemy04;
 	char			**map;
-	char			**floor;
 }				t_game;
 
 //** WINDOW **
@@ -81,6 +80,7 @@ void		ft_player(t_game *game);
 void		ft_load_enemy(char **map, t_game *game);
 char		*ft_itoa(int n);
 void		ft_exit(t_game *game);
+void		ft_finish(t_game *game);
 
 //** CLOSE GAME **
 
@@ -106,7 +106,6 @@ void		ft_moveleft(t_game *game);
 //** BUTTONS **
 
 int			key_press(int key, t_game *game);
-void		ft_win_game(t_game *game);
 void		ft_lose_game(t_game *game);
 void		ft_putmoves(int c);
 

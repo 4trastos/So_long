@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 20:30:55 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/20 17:01:25 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/21 17:06:06 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ int	key_press(int key, t_game *game)
 		mlx_destroy_window(game->mlx, game->new_w);
 		exit (0);
 	}
+	if (game->map[game->posy / SIZE][game->posx / SIZE] ==
+		game->map[game->posye / SIZE][game->posxe / SIZE] &&
+		game->collect_count == 0)
+		ft_finish(game);
 	if (key == 13)
 		move_w(game);
 	if (key == 0)
@@ -40,11 +44,9 @@ int	key_press(int key, t_game *game)
 
 void	move_w(t_game *game)
 {
-	if (game->map[game->posy / SIZE + UP][game->posx / SIZE] == 'E'
-			&& game->collect_count == 0)
-		ft_win_game(game);
 	if (game->map[game->posy / SIZE + UP][game->posx / SIZE] == '0' ||
-			game->map[game->posy / SIZE + UP][game->posx / SIZE] == 'C')
+			game->map[game->posy / SIZE + UP][game->posx / SIZE] == 'C' ||
+			game->map[game->posy / SIZE + UP][game->posx / SIZE] == 'E')
 	{
 		if ((game->posx / SIZE) % 2 == 0)
 			mlx_put_image_to_window(game->mlx, game->new_w,
@@ -68,10 +70,8 @@ void	move_w(t_game *game)
 
 void	move_s(t_game *game)
 {
-	if (game->map[game->posy / SIZE + DOWN][game->posx / SIZE] == 'E'
-			&& game->collect_count == 0)
-		ft_win_game(game);
 	if (game->map[game->posy / SIZE + DOWN][game->posx / SIZE] == '0' ||
+			game->map[game->posy / SIZE + DOWN][game->posx / SIZE] == 'E' ||
 			game->map[game->posy / SIZE + DOWN][game->posx / SIZE] == 'C')
 	{
 		if ((game->posx / SIZE) % 2 == 0)
@@ -96,10 +96,8 @@ void	move_s(t_game *game)
 
 void	move_a(t_game *game)
 {
-	if (game->map[game->posy / SIZE][game->posx / SIZE - 1] == 'E'
-			&& game->collect_count == 0)
-		ft_win_game(game);
 	if (game->map[game->posy / SIZE][game->posx / SIZE - 1] == '0' ||
+			game->map[game->posy / SIZE][game->posx / SIZE - 1] == 'E' ||
 			game->map[game->posy / SIZE][game->posx / SIZE - 1] == 'C')
 	{
 		if ((game->posx / SIZE) % 2 == 0)
@@ -124,10 +122,8 @@ void	move_a(t_game *game)
 
 void	move_d(t_game *game)
 {
-	if (game->map[game->posy / SIZE][game->posx / SIZE + 1] == 'E'
-			&& game->collect_count == 0)
-		ft_win_game(game);
 	if (game->map[game->posy / SIZE][game->posx / SIZE + 1] == '0' ||
+			game->map[game->posy / SIZE][game->posx / SIZE + 1] == 'E' ||
 			game->map[game->posy / SIZE][game->posx / SIZE + 1] == 'C')
 	{
 		if ((game->posx / SIZE) % 2 == 0)

@@ -6,7 +6,7 @@
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:45:36 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/14 18:02:58 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/02/21 16:35:27 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	ft_game(t_game *game, char **map, t_design *design)
 	game->postcontrol = 0;
 	game->posx = design->xp * SIZE;
 	game->posy = design->yp * SIZE;
+	game->posxe = design->xe * SIZE;
+	game->posye = design->ye * SIZE;
 	ft_load_sprites(game);
 	ft_loadsprites(game);
 	ft_floor(game, design);

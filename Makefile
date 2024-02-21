@@ -6,7 +6,7 @@
 #    By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/06 12:27:32 by davgalle          #+#    #+#              #
-#    Updated: 2024/02/20 16:36:39 by davgalle         ###   ########.fr        #
+#    Updated: 2024/02/21 16:36:50 by davgalle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,8 @@ SRCS = src/main.c \
 	   src/ft_floor.c \
 	   src/ft_collect.c \
 	   src/ft_animation.c \
-	   src/ft_itoa.c
+	   src/ft_itoa.c \
+	   src/ft_float.c
 
 BONUS = bonus/main_bonus.c \
 	   bonus/ft_checker_bonus.c \
@@ -71,7 +72,8 @@ BONUS = bonus/main_bonus.c \
 	   bonus/ft_floor_bonus.c \
 	   bonus/ft_collect_bonus.c \
 	   bonus/ft_animation_bonus.c \
-	   bonus/ft_itoa_bonus.c
+	   bonus/ft_itoa_bonus.c \
+	   bonus/ft_float_bonus.c
 
 OBJTS = $(SRCS:.c=.o)
 

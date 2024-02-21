@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_player.c                                        :+:      :+:    :+:   */
+/*   ft_float copy.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davgalle <davgalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/02 15:07:34 by davgalle          #+#    #+#             */
-/*   Updated: 2024/02/21 17:07:54 by davgalle         ###   ########.fr       */
+/*   Created: 2024/02/20 19:57:28 by davgalle          #+#    #+#             */
+/*   Updated: 2024/02/21 17:09:25 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "../incl/game.h"
 
-void	ft_player(t_game *game)
+void	ft_exit(t_game *game)
 {
+	game->map[game->posye / SIZE][game->posxe / SIZE] = 'E';
 	mlx_put_image_to_window(game->mlx, game->new_w,
-		game->init, game->posx, game->posy);
-}
-
-void	ft_finish(t_game *game)
-{
-	mlx_destroy_window(game->mlx, game->new_w);
-	ft_error_msg("Congrats, you win!!!! 🥳🏆\n", NULL);
+		game->exit, game->posxe, game->posye);
 }
